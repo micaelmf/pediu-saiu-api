@@ -1,0 +1,225 @@
+generator client {
+    provider = "prisma-client-js"
+    output   = "./generated/client"
+}
+
+datasource db {
+    provider = "mysql"
+    url      = env("DATABASE_URL")
+}
+
+model User {
+    id           Int         @id @default(autoincrement())
+    uuid         String      @unique
+    email        String
+    nickname     String
+    role         String
+    firstName    String?
+    lastName     String?
+    createdAt    DateTime    @default(now())
+    updatedAt    DateTime    @updatedAt
+    deletedAt    DateTime?   @updatedAt
+    orders       Order[]
+    enterprise   Enterprise? @relation(fields: [enterpriseId], references: [id])
+    enterpriseId Int?
+}
+
+model Category {
+    id           Int         @id @default(autoincrement())
+    uuid         String      @unique
+    name         String
+    description  String?
+    status       String      @default("active") // Pode ser 'ativo', 'inativo', 'removido' etc.
+    products     Product[]
+    enterprise   Enterprise  @relation(fields: [enterpriseId], references: [id])
+    enterpriseId Int
+    promotions   Promotion[]
+    combos       Combo[]
+}
+
+model Product {
+    id                Int             @id @default(autoincrement())
+    uuid              String          @unique
+    name              String
+    description       String?
+    type              String          @default("product") // Por exemplo, 'produto', 'adicional', 'acompanhamento' etc.
+    price             Float
+    free              Boolean         @default(false)
+    status            String          @default("active") // Pode ser 'ativo', 'inativo', 'removido' etc.
+    additionalsMax    Int             @default(0)
+    accompanimentsMax Int             @default(0)
+    createdAt         DateTime        @default(now())
+    updatedAt         DateTime        @updatedAt
+    deletedAt         DateTime?
+    category          Category        @relation(fields: [categoryId], references: [id])
+    categoryId        Int
+    enterprise        Enterprise      @relation(fields: [enterpriseId], references: [id])
+    enterpriseId      Int
+    accompaniments    Accompaniment[]
+    additionals       Additional[]
+    orders            Order[]
+    orderItems        OrderItem[]
+    productTags       ProductTag[]
+    combos            Combo[]         @relation("ComboProducts")
+    ComboProducts     ComboProducts[]
+    Combo             Combo[]
+}
+
+model Accompaniment {
+    id        Int     @id @default(autoincrement())
+    uuid      String  @unique
+    product   Product @relation(fields: [productId], references: [id])
+    productId Int
+}
+
+model Additional {
+    id        Int     @id @default(autoincrement())
+    uuid      String  @unique
+    product   Product @relation(fields: [productId], references: [id])
+    productId Int
+}
+
+model Order {
+    id             Int            @id @default(autoincrement())
+    uuid           String         @unique
+    totalPrice     Float
+    status         String         @default("aguardando atendimento") // Pode ser 'aguardando atendimento', 'preparando', 'separando', 'entregando', 'recebido', 'removido' etc.
+    updatedAt      DateTime       @updatedAt
+    orderDate      DateTime       @default(now())
+    user           User           @relation(fields: [userId], references: [id])
+    userId         Int
+    products       Product[]
+    enterprise     Enterprise     @relation(fields: [enterpriseId], references: [id])
+    enterpriseId   Int
+    orderItems     OrderItem[]
+    orderHistories OrderHistory[]
+}
+
+model OrderItem {
+    id        Int     @id @default(autoincrement())
+    uuid      String  @unique
+    quantity  Int
+    price     Float
+    product   Product @relation(fields: [productId], references: [id])
+    productId Int
+    order     Order   @relation(fields: [orderId], references: [id])
+    orderId   Int
+}
+
+model OrderHistory {
+    id          Int      @id @default(autoincrement())
+    uuid        String   @unique
+    status      String
+    description String?
+    order       Order    @relation(fields: [orderId], references: [id])
+    orderId     Int
+    createdAt   DateTime @default(now())
+}
+
+model Enterprise {
+    id                Int             @id @default(autoincrement())
+    uuid              String          @unique
+    name              String
+    responsiblePerson String?
+    phoneNumber       String?
+    email             String?
+    description       String?
+    status            String
+    createdAt         DateTime        @default(now())
+    updatedAt         DateTime        @updatedAt
+    deletedAt         DateTime?
+    users             User[]
+    categories        Category[]
+    products          Product[]
+    configurations    Configuration[]
+    orders            Order[]
+    promotions        Promotion[]
+    combos            Combo[]
+}
+
+model Configuration {
+    id           Int        @id @default(autoincrement())
+    uuid         String     @unique
+    configKey    String
+    configValue  String
+    configText   String?
+    createdAt    DateTime   @default(now())
+    updatedAt    DateTime   @updatedAt
+    enterprise   Enterprise @relation(fields: [enterpriseId], references: [id])
+    enterpriseId Int
+}
+
+model Tag {
+    id              Int            @id @default(autoincrement())
+    uuid            String         @unique
+    name            String         @unique
+    textColor       String
+    backgroundColor String
+    status          String         @default("ativo")
+    updatedAt       DateTime       @updatedAt
+    deletedAt       DateTime?
+    description     String?
+    productTags     ProductTag[]
+    promotionTags   PromotionTag[]
+}
+
+model ProductTag {
+    id        Int     @id @default(autoincrement())
+    uuid      String  @unique
+    product   Product @relation(fields: [productId], references: [id])
+    productId Int
+    tag       Tag     @relation(fields: [tagId], references: [id])
+    tagId     Int
+}
+
+model PromotionTag {
+    id          Int       @id @default(autoincrement())
+    uuid        String    @unique
+    promotion   Promotion @relation(fields: [promotionId], references: [id])
+    promotionId Int
+    tag         Tag       @relation(fields: [tagId], references: [id])
+    tagId       Int
+}
+
+model Promotion {
+    id            Int            @id @default(autoincrement())
+    uuid          String         @unique
+    name          String
+    description   String?
+    status        String
+    discountRate  Float
+    startDate     DateTime
+    endDate       DateTime
+    category      Category       @relation(fields: [categoryId], references: [id])
+    categoryId    Int
+    enterprise    Enterprise     @relation(fields: [enterpriseId], references: [id])
+    enterpriseId  Int
+    deletedAt     DateTime?
+    promotionTags PromotionTag[]
+}
+
+model Combo {
+    id            Int             @id @default(autoincrement())
+    uuid          String          @unique
+    name          String
+    description   String?
+    price         Float
+    status        String
+    category      Category        @relation(fields: [categoryId], references: [id])
+    categoryId    Int
+    enterprise    Enterprise      @relation(fields: [enterpriseId], references: [id])
+    enterpriseId  Int
+    products      Product[]       @relation("ComboProducts")
+    ComboProducts ComboProducts[]
+    Product       Product?        @relation(fields: [productId], references: [id])
+    productId     Int?
+}
+
+model ComboProducts {
+    id        Int     @id @default(autoincrement())
+    uuid      String  @unique
+    combo     Combo   @relation(fields: [comboId], references: [id])
+    comboId   Int
+    product   Product @relation(fields: [productId], references: [id])
+    productId Int
+}
