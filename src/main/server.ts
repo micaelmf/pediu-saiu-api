@@ -8,6 +8,7 @@ import '../containers'; // Importe o arquivo onde você configura o contêiner
 
 // Importe as rotas após configurar o contêiner
 import userRoutes from '../adapters/http/routes/userRoutes';
+import enterpriseRoutes from '../adapters/http/routes/enterpriseRoutes';
 
 // Carregue as variáveis de ambiente a partir do arquivo .env
 dotenv.config();
@@ -26,8 +27,7 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 
 // Use as rotas importadas
 app.use('/users', userRoutes);
-// Configure outras rotas aqui.
-// app.use('/categories', categoryRoutes);
+app.use('/enterprises', enterpriseRoutes);
 // app.use('/products', productRoutes);
 
 app.listen(port, () => {
