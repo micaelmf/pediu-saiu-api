@@ -33,8 +33,8 @@ describe('EnterpriseController', () => {
     // Defina os dados da empresa que você deseja criar
     const enterpriseData: Enterprise = {
       id: 2,
-      uuid: 'teste',
-      name: 'Empresa TESTE',
+      uuid: 'teste5',
+      name: 'Empresa TESTE 2',
       responsiblePerson: 'Micael',
       phoneNumber: '88996609498',
       email: 'micaelmf@gmail.com',

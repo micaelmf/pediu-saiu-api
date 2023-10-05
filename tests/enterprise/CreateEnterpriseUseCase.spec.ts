@@ -12,9 +12,9 @@ describe('CreateEnterpriseUseCase', () => {
 
     // Defina os dados da empresa que você deseja criar
     const enterpriseData: Enterprise = {
-      id: 2,
-      uuid: 'teste',
-      name: 'Empresa TESTE',
+      id: 11,
+      uuid: 'teste4',
+      name: 'Empresa TESTE 3',
       responsiblePerson: 'Micael',
       phoneNumber: '88996609498',
       email: 'micaelmf@gmail.com',

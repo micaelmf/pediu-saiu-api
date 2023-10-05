@@ -12,14 +12,14 @@ export class CreateEnterpriseUseCase {
 
   async execute(enterprise: Enterprise): Promise<Enterprise> {
     try {
-      // Implemente a lógica para criar uma empresa aqui.
       const createdEnterprise = await this.enterpriseRepository.create(
         enterprise
       );
+
       return createdEnterprise;
     } catch (error) {
-      // Trate os erros apropriadamente
-      // throw new Error('Erro ao criar empresa');
+      // Aqui você pode tratar o erro de acordo com suas necessidades
+      throw error; // Propague o erro para quem chamou o caso de uso
     }
   }
 }
