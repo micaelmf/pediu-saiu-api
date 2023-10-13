@@ -11,7 +11,7 @@ require("dotenv").config({
 class CustomEnvironment extends NodeEnvironment {
   constructor(config) {
     super(config);
-    this.schema = `test_pediu_saiu_wsl`;
+    this.schema = process.env.TEST_DATABASE_NAME;
     this.prisma = new PrismaClient({
       datasources: {
         db: {
