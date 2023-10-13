@@ -1,12 +1,14 @@
+/**
+ * @jest-environment ./prisma/prisma-environment-jest
+ */
 import 'reflect-metadata';
+import { container } from 'tsyringe';
+import '../../src/containers';
 import request from 'supertest';
 import express, { Router } from 'express'; // Importe também Router do Express
 
-import { container } from 'tsyringe';
 import { EnterpriseController } from '../../src/adapters/http/controllers/EnterpriseController';
 import { CreateEnterpriseUseCase } from '../../src/application/usecases/enterprise/CreateEnterpriseUseCase';
-import { Enterprise } from '../../src/domain/entities/Enterprise';
-import '../../src/containers';
 
 describe('EnterpriseController', () => {
   it('should create an enterprise via API', async () => {
@@ -31,7 +33,7 @@ describe('EnterpriseController', () => {
     app.use('/enterprises', router);
 
     // Defina os dados da empresa que você deseja criar
-    const enterpriseData: Enterprise = {
+    const enterpriseData = {
       id: 2,
       uuid: 'teste5',
       name: 'Empresa TESTE 2',

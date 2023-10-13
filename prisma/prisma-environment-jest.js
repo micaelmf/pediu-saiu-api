@@ -29,7 +29,7 @@ class CustomEnvironment extends NodeEnvironment {
       password: 'root',
     });
 
-    dbConnection.query(`CREATE DATABASE ${this.schema}`, (err) => {
+    dbConnection.query(`CREATE DATABASE IF NOT EXISTS ${this.schema}`, (err) => {
       if (err) {
         console.error(`Erro ao criar o banco de dados: ${err}`);
       } else {

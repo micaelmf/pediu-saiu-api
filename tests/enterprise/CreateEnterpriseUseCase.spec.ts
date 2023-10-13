@@ -3,10 +3,9 @@
  */
 import 'reflect-metadata';
 import { container } from 'tsyringe';
-import { CreateEnterpriseUseCase } from '../../src/application/usecases/enterprise/CreateEnterpriseUseCase';
-
-import { Enterprise } from '../../src/domain/entities/Enterprise';
 import '../../src/containers';
+
+import { CreateEnterpriseUseCase } from '../../src/application/usecases/enterprise/CreateEnterpriseUseCase';
 
 
 describe('CreateEnterpriseUseCase', () => {
