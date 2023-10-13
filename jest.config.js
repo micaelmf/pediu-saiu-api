@@ -3,6 +3,6 @@ require('dotenv').config({ path: '.env.test' });
 
 module.exports = {
     preset: 'ts-jest',
-    testEnvironment: './prisma/prisma-environment-jest.js',
+    testEnvironment: 'node',
     testTimeout: 60000
 };

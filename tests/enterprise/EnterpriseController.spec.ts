@@ -1,16 +1,22 @@
-/**
- * @jest-environment ./prisma/prisma-environment-jest
- */
 import 'reflect-metadata';
 import { container } from 'tsyringe';
 import '../../src/containers';
 import request from 'supertest';
 import express, { Router } from 'express'; // Importe também Router do Express
+import { setupTestEnvironment, teardownTestEnvironment } from '../setupTest';
 
 import { EnterpriseController } from '../../src/adapters/http/controllers/EnterpriseController';
 import { CreateEnterpriseUseCase } from '../../src/application/usecases/enterprise/CreateEnterpriseUseCase';
 
 describe('EnterpriseController', () => {
+  beforeAll(async () => {
+    await setupTestEnvironment();
+  });
+
+  afterAll(async () => {
+    await teardownTestEnvironment();
+  });
+
   it('should create an enterprise via API', async () => {
     const app = express();
     const router = Router(); // Crie um novo Router do Express
