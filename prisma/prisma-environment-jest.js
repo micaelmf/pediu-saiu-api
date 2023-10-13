@@ -11,8 +11,7 @@ require("dotenv").config({
 class CustomEnvironment extends NodeEnvironment {
   constructor(config) {
     super(config);
-    this.schema = `code_schema_${new Date().getTime()}`;
-    process.env.TEST_DATABASE_URL = `mysql://root:root@localhost:3306/${this.schema}`;
+    this.schema = `test_pediu_saiu_wsl`;
     this.prisma = new PrismaClient({
       datasources: {
         db: {
