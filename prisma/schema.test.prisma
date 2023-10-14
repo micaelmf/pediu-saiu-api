@@ -12,6 +12,8 @@ model User {
     id           Int         @id @default(autoincrement())
     uuid         String      @unique
     email        String
+    avatar       String?
+    cellPhone    String?
     nickname     String
     role         String
     firstName    String?
