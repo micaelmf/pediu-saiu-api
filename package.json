@@ -8,7 +8,7 @@
     "generate:test": "npx prisma migrate deploy --schema=./prisma/schema.test.prisma && npx prisma generate --schema=./prisma/schema.test.prisma",
     "test": "jest",
     "start": "node dist/main/server.js",
-    "dev": "ts-node src/main/server.ts"
+    "dev": "ts-node-dev --respawn src/main/server.ts"
   },
   "prisma": {
     "seed": "node --loader ts-node/esm prisma/seed.ts"
@@ -47,6 +47,7 @@
     "supertest": "^6.3.3",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^5.2.2"
   }
 }
