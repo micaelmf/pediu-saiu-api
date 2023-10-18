@@ -1,8 +1,7 @@
-// src/containers.ts
-
 import { container } from 'tsyringe';
 import { UserRepository } from './adapters/database/mysql/repositories/UserRepository';
 import { CreateUserUseCase } from './application/usecases/user/CreateUserUseCase';
+import { EditUserUseCase } from './application/usecases/user/EditUserUseCase'; // Importe o EditUserUseCase
 import { UserController } from './adapters/http/controllers/UserController';
 import { EnterpriseRepository } from './adapters/database/mysql/repositories/EnterpriseRepository';
 import { CreateEnterpriseUseCase } from './application/usecases/enterprise/CreateEnterpriseUseCase';
@@ -15,6 +14,10 @@ container.register<UserRepository>('UserRepository', {
 
 container.register<CreateUserUseCase>('CreateUserUseCase', {
   useClass: CreateUserUseCase,
+});
+
+container.register<EditUserUseCase>('EditUserUseCase', {
+  useClass: EditUserUseCase,
 });
 
 container.register<UserController>('UserController', {

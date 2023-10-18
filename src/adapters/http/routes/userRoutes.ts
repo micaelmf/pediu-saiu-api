@@ -2,7 +2,6 @@
 import { Router } from 'express';
 import { container } from 'tsyringe';
 import { UserController } from '../controllers/UserController';
-import { CreateUserUseCase } from '../../../application/usecases/user/CreateUserUseCase';
 
 const router = Router();
 
@@ -10,19 +9,14 @@ const router = Router();
 import '../../../containers'; // Importe o arquivo onde você configura o contêiner
 
 // Resolva as dependências do contêiner
-const createUserUseCase = container.resolve(CreateUserUseCase);
+const userController = container.resolve(UserController);
 
 router.post('/', async (req, res) => {
-  try {
-    const user = req.body; // Obtenha os dados do usuário do corpo da solicitação
-    const createdUser = await createUserUseCase.execute(user);
-    res.status(201).json(createdUser);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Erro ao criar usuário' });
-  }
+  await userController.createUser(req, res);
 });
 
-// Outras rotas, como GET para listar usuários, GET para buscar por ID, etc.
+router.put('/:uuid', async (req, res) => {
+    const editedUser = await userController.editUser(req, res);
+});
 
 export default router;

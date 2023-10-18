@@ -1,30 +1,54 @@
 // src/adapters/http/controllers/UserController.ts
 import { Request, Response } from 'express';
 import { CreateUserUseCase } from '../../../application/usecases/user/CreateUserUseCase';
+import { EditUserUseCase } from '../../../application/usecases/user/EditUserUseCase'; // Importe o EditUserUseCase
 import { inject, injectable } from 'tsyringe';
-import { UserRepositoryInterface } from '../../../domain/repositories/UserRepositoryInterface';
+import { UserNotFoundException } from '../../exceptions/UserNotFoundException';
+import { BrevoEmailService } from '../../../domain/services/BrevoEmailService';
 
 @injectable()
 export class UserController {
   constructor(
-    @inject('CreateUserUseCase') private createUserUseCase: CreateUserUseCase
+    @inject('CreateUserUseCase') private createUserUseCase: CreateUserUseCase,
+    @inject('EditUserUseCase') private editUserUseCase: EditUserUseCase,
+    @inject('BrevoEmailService') private emailService: BrevoEmailService
   ) {}
 
   async createUser(req: Request, res: Response): Promise<void> {
     try {
-      const user = req.body; // Obtenha os dados do usuário do corpo da solicitação
-      const newUser = await this.createUserUseCase.execute(user);
+      const userData = req.body;
+      const createdUser = await this.createUserUseCase.execute(userData);
 
-      // Chame o caso de uso para criar o usuário.
-      const createdUser = await this.createUserUseCase.execute(newUser);
-
-      // Retorne a resposta com o usuário criado.
       res.status(201).json(createdUser);
     } catch (error) {
-      console.error(error);
       res.status(500).json({ error: 'Erro ao criar usuário' });
     }
   }
 
-  // Implemente outros métodos de controlador aqui.
+  async editUser(req: Request, res: Response): Promise<void> {
+    const uuid = req.params.uuid;
+    const updatedUserData = req.body;
+
+    try {
+      const editedUser = await this.editUserUseCase.execute(
+        uuid,
+        updatedUserData
+      );
+
+      res.status(200).json(editedUser);
+    } catch (error: any) {
+      if (error instanceof UserNotFoundException) {
+        res.status(404).json({ error: 'Instancia: ' + error.message });
+      } else {
+        await this.emailService.sendErroEmail(error, {
+          userId: req.params.uuid,
+          enterpriseId: req.body?.enterpriseId,
+          message: error.message,
+          to: [{email: "micaelmf2@gmail.com"}]
+        });
+
+        res.status(500).json({ error: 'Genérico: ' + error.message });
+      }
+    }
+  }
 }
