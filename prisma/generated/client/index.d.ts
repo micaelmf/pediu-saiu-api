@@ -2577,6 +2577,7 @@ export namespace Prisma {
     id: number | null
     uuid: string | null
     email: string | null
+    password: string | null
     avatar: string | null
     cellPhone: string | null
     nickname: string | null
@@ -2593,6 +2594,7 @@ export namespace Prisma {
     id: number | null
     uuid: string | null
     email: string | null
+    password: string | null
     avatar: string | null
     cellPhone: string | null
     nickname: string | null
@@ -2609,6 +2611,7 @@ export namespace Prisma {
     id: number
     uuid: number
     email: number
+    password: number
     avatar: number
     cellPhone: number
     nickname: number
@@ -2637,6 +2640,7 @@ export namespace Prisma {
     id?: true
     uuid?: true
     email?: true
+    password?: true
     avatar?: true
     cellPhone?: true
     nickname?: true
@@ -2653,6 +2657,7 @@ export namespace Prisma {
     id?: true
     uuid?: true
     email?: true
+    password?: true
     avatar?: true
     cellPhone?: true
     nickname?: true
@@ -2669,6 +2674,7 @@ export namespace Prisma {
     id?: true
     uuid?: true
     email?: true
+    password?: true
     avatar?: true
     cellPhone?: true
     nickname?: true
@@ -2772,6 +2778,7 @@ export namespace Prisma {
     id: number
     uuid: string
     email: string
+    password: string
     avatar: string | null
     cellPhone: string | null
     nickname: string
@@ -2807,6 +2814,7 @@ export namespace Prisma {
     id?: boolean
     uuid?: boolean
     email?: boolean
+    password?: boolean
     avatar?: boolean
     cellPhone?: boolean
     nickname?: boolean
@@ -2826,6 +2834,7 @@ export namespace Prisma {
     id?: boolean
     uuid?: boolean
     email?: boolean
+    password?: boolean
     avatar?: boolean
     cellPhone?: boolean
     nickname?: boolean
@@ -2855,6 +2864,7 @@ export namespace Prisma {
       id: number
       uuid: string
       email: string
+      password: string
       avatar: string | null
       cellPhone: string | null
       nickname: string
@@ -3265,6 +3275,7 @@ export namespace Prisma {
     readonly id: FieldRef<"User", 'Int'>
     readonly uuid: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
+    readonly password: FieldRef<"User", 'String'>
     readonly avatar: FieldRef<"User", 'String'>
     readonly cellPhone: FieldRef<"User", 'String'>
     readonly nickname: FieldRef<"User", 'String'>
@@ -19150,6 +19161,7 @@ export namespace Prisma {
     id: 'id',
     uuid: 'uuid',
     email: 'email',
+    password: 'password',
     avatar: 'avatar',
     cellPhone: 'cellPhone',
     nickname: 'nickname',
@@ -19428,6 +19440,7 @@ export namespace Prisma {
     id?: IntFilter<"User"> | number
     uuid?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
+    password?: StringFilter<"User"> | string
     avatar?: StringNullableFilter<"User"> | string | null
     cellPhone?: StringNullableFilter<"User"> | string | null
     nickname?: StringFilter<"User"> | string
@@ -19446,6 +19459,7 @@ export namespace Prisma {
     id?: SortOrder
     uuid?: SortOrder
     email?: SortOrder
+    password?: SortOrder
     avatar?: SortOrderInput | SortOrder
     cellPhone?: SortOrderInput | SortOrder
     nickname?: SortOrder
@@ -19467,6 +19481,7 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     email?: StringFilter<"User"> | string
+    password?: StringFilter<"User"> | string
     avatar?: StringNullableFilter<"User"> | string | null
     cellPhone?: StringNullableFilter<"User"> | string | null
     nickname?: StringFilter<"User"> | string
@@ -19485,6 +19500,7 @@ export namespace Prisma {
     id?: SortOrder
     uuid?: SortOrder
     email?: SortOrder
+    password?: SortOrder
     avatar?: SortOrderInput | SortOrder
     cellPhone?: SortOrderInput | SortOrder
     nickname?: SortOrder
@@ -19509,6 +19525,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"User"> | number
     uuid?: StringWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
+    password?: StringWithAggregatesFilter<"User"> | string
     avatar?: StringNullableWithAggregatesFilter<"User"> | string | null
     cellPhone?: StringNullableWithAggregatesFilter<"User"> | string | null
     nickname?: StringWithAggregatesFilter<"User"> | string
@@ -20638,6 +20655,7 @@ export namespace Prisma {
   export type UserCreateInput = {
     uuid: string
     email: string
+    password: string
     avatar?: string | null
     cellPhone?: string | null
     nickname: string
@@ -20655,6 +20673,7 @@ export namespace Prisma {
     id?: number
     uuid: string
     email: string
+    password: string
     avatar?: string | null
     cellPhone?: string | null
     nickname: string
@@ -20671,6 +20690,7 @@ export namespace Prisma {
   export type UserUpdateInput = {
     uuid?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     cellPhone?: NullableStringFieldUpdateOperationsInput | string | null
     nickname?: StringFieldUpdateOperationsInput | string
@@ -20688,6 +20708,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     uuid?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     cellPhone?: NullableStringFieldUpdateOperationsInput | string | null
     nickname?: StringFieldUpdateOperationsInput | string
@@ -20705,6 +20726,7 @@ export namespace Prisma {
     id?: number
     uuid: string
     email: string
+    password: string
     avatar?: string | null
     cellPhone?: string | null
     nickname: string
@@ -20720,6 +20742,7 @@ export namespace Prisma {
   export type UserUpdateManyMutationInput = {
     uuid?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     cellPhone?: NullableStringFieldUpdateOperationsInput | string | null
     nickname?: StringFieldUpdateOperationsInput | string
@@ -20735,6 +20758,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     uuid?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     cellPhone?: NullableStringFieldUpdateOperationsInput | string | null
     nickname?: StringFieldUpdateOperationsInput | string
@@ -21933,6 +21957,7 @@ export namespace Prisma {
     id?: SortOrder
     uuid?: SortOrder
     email?: SortOrder
+    password?: SortOrder
     avatar?: SortOrder
     cellPhone?: SortOrder
     nickname?: SortOrder
@@ -21954,6 +21979,7 @@ export namespace Prisma {
     id?: SortOrder
     uuid?: SortOrder
     email?: SortOrder
+    password?: SortOrder
     avatar?: SortOrder
     cellPhone?: SortOrder
     nickname?: SortOrder
@@ -21970,6 +21996,7 @@ export namespace Prisma {
     id?: SortOrder
     uuid?: SortOrder
     email?: SortOrder
+    password?: SortOrder
     avatar?: SortOrder
     cellPhone?: SortOrder
     nickname?: SortOrder
@@ -25894,6 +25921,7 @@ export namespace Prisma {
   export type UserCreateWithoutOrdersInput = {
     uuid: string
     email: string
+    password: string
     avatar?: string | null
     cellPhone?: string | null
     nickname: string
@@ -25910,6 +25938,7 @@ export namespace Prisma {
     id?: number
     uuid: string
     email: string
+    password: string
     avatar?: string | null
     cellPhone?: string | null
     nickname: string
@@ -26089,6 +26118,7 @@ export namespace Prisma {
   export type UserUpdateWithoutOrdersInput = {
     uuid?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     cellPhone?: NullableStringFieldUpdateOperationsInput | string | null
     nickname?: StringFieldUpdateOperationsInput | string
@@ -26105,6 +26135,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     uuid?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     cellPhone?: NullableStringFieldUpdateOperationsInput | string | null
     nickname?: StringFieldUpdateOperationsInput | string
@@ -26476,6 +26507,7 @@ export namespace Prisma {
   export type UserCreateWithoutEnterpriseInput = {
     uuid: string
     email: string
+    password: string
     avatar?: string | null
     cellPhone?: string | null
     nickname: string
@@ -26492,6 +26524,7 @@ export namespace Prisma {
     id?: number
     uuid: string
     email: string
+    password: string
     avatar?: string | null
     cellPhone?: string | null
     nickname: string
@@ -26763,6 +26796,7 @@ export namespace Prisma {
     id?: IntFilter<"User"> | number
     uuid?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
+    password?: StringFilter<"User"> | string
     avatar?: StringNullableFilter<"User"> | string | null
     cellPhone?: StringNullableFilter<"User"> | string | null
     nickname?: StringFilter<"User"> | string
@@ -28729,6 +28763,7 @@ export namespace Prisma {
     id?: number
     uuid: string
     email: string
+    password: string
     avatar?: string | null
     cellPhone?: string | null
     nickname: string
@@ -28812,6 +28847,7 @@ export namespace Prisma {
   export type UserUpdateWithoutEnterpriseInput = {
     uuid?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     cellPhone?: NullableStringFieldUpdateOperationsInput | string | null
     nickname?: StringFieldUpdateOperationsInput | string
@@ -28828,6 +28864,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     uuid?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     cellPhone?: NullableStringFieldUpdateOperationsInput | string | null
     nickname?: StringFieldUpdateOperationsInput | string
@@ -28844,6 +28881,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     uuid?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     cellPhone?: NullableStringFieldUpdateOperationsInput | string | null
     nickname?: StringFieldUpdateOperationsInput | string

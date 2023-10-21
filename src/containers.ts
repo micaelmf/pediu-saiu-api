@@ -7,6 +7,8 @@ import { EnterpriseRepository } from './adapters/database/mysql/repositories/Ent
 import { CreateEnterpriseUseCase } from './application/usecases/enterprise/CreateEnterpriseUseCase';
 import { EnterpriseController } from './adapters/http/controllers/EnterpriseController';
 import { BrevoEmailService } from './domain/services/BrevoEmailService';
+import { LoginUseCase } from './application/usecases/auth/LoginUseCase';
+import { ListEnterprisesUseCase } from './application/usecases/enterprise/ListEnterprisesUseCase';
 
 container.register<UserRepository>('UserRepository', {
   useClass: UserRepository,
@@ -32,12 +34,20 @@ container.register<CreateEnterpriseUseCase>('CreateEnterpriseUseCase', {
   useClass: CreateEnterpriseUseCase,
 });
 
+container.register<ListEnterprisesUseCase>('ListEnterprisesUseCase', {
+  useClass: ListEnterprisesUseCase,
+});
+
 container.register<EnterpriseController>('EnterpriseController', {
   useClass: EnterpriseController,
 });
 
 container.register<BrevoEmailService>('BrevoEmailService', {
   useClass: BrevoEmailService,
+});
+
+container.register<LoginUseCase>('LoginUseCase', {
+  useClass: LoginUseCase,
 });
 
 export default container;

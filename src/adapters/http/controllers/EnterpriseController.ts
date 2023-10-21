@@ -1,14 +1,15 @@
 // src/adapters/http/controllers/EnterpriseController.ts
 import { Request, Response } from 'express';
 import { CreateEnterpriseUseCase } from '../../../application/usecases/enterprise/CreateEnterpriseUseCase';
+import { ListEnterprisesUseCase } from '../../../application/usecases/enterprise/ListEnterprisesUseCase';
 import { inject, injectable } from 'tsyringe';
 import { Enterprise } from '../../../domain/entities/Enterprise';
 
 @injectable()
 export class EnterpriseController {
   constructor(
-    @inject('CreateEnterpriseUseCase')
-    private createEnterpriseUseCase: CreateEnterpriseUseCase
+    @inject('CreateEnterpriseUseCase') private createEnterpriseUseCase: CreateEnterpriseUseCase,
+    @inject('ListEnterprisesUseCase') private listEnterprisesUseCase: ListEnterprisesUseCase
   ) {}
 
   async createEnterprise(req: Request, res: Response): Promise<void> {
@@ -26,6 +27,19 @@ export class EnterpriseController {
     } catch (error) {
       // console.error(error);
       res.status(500).json({ error: 'Erro ao criar empresa' });
+    }
+  }
+
+  async listEnterprises(req: Request, res: Response): Promise<void> {
+    try {
+      // Chame o caso de uso para listar empresas e obtenha a resposta
+      const enterprises: Enterprise[] = await this.listEnterprisesUseCase.execute();
+
+      // Retorne a lista de empresas como resposta
+      res.status(200).json(enterprises);
+    } catch (error) {
+      // console.error(error);
+      res.status(500).json({ error: 'Erro ao listar empresas' });
     }
   }
 

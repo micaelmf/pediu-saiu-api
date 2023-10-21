@@ -1,3 +1,5 @@
+// src/domain/entities/seeds/UserSeed.ts
+
 import { UserInterface } from '../../interfaces/UserInterface';
 import { ulid } from 'ulid';
 import { Faker, pt_BR } from '@faker-js/faker';
@@ -22,9 +24,13 @@ export function createUserSeed(
   const ulidString = ulid();
   const avatar = `${ulidString}.jpg`;
 
+  const password =
+    '$2b$10$e./L/zFAxWk08NpFVWWNieTjzaPX0IrqSpajLJii4/ow05lHcsJ1W';
+
   users.push({
     uuid: ulidString,
     email: 'micaelmf2@gmail.com',
+    password: password || '',
     cellPhone: '+5588996609498',
     avatar: avatar,
     nickname: 'micaelmf',
@@ -41,6 +47,7 @@ export function createUserSeed(
     const fakeUser: UserInterface = {
       uuid: ulidString,
       email: faker.internet.email(),
+      password: password || '',
       avatar: avatar,
       nickname: faker.internet.userName(),
       role: ruleOptions[Math.floor(Math.random() * ruleOptions.length)],

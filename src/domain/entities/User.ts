@@ -4,6 +4,7 @@ export class User {
     public id: number,
     public uuid: string,
     public email: string,
+    public password: string,
     public nickname: string,
     public role: string,
     public firstName: string | null,

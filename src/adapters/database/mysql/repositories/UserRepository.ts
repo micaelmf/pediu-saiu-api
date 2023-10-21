@@ -19,6 +19,7 @@ export class UserRepository implements UserRepositoryInterface {
           // Mapeie os campos do objeto User para o formato do banco de dados aqui
           uuid: user.uuid,
           email: user.email,
+          password: user.password,
           nickname: user.nickname,
           role: user.role,
           firstName: user.firstName,
@@ -38,6 +39,26 @@ export class UserRepository implements UserRepositoryInterface {
     return await this.prisma.user.findUnique({
       where: {
         uuid,
+      },
+    });
+  }
+
+  async findByEmailAndEnterpriseId(email: string, enterpriseId: number): Promise<User | null> {
+    return await this.prisma.user.findFirst({
+      where: {
+        enterpriseId,
+        email,
+      },
+    });
+  }
+
+  async findUserWithCompanyDataByUuid(uuid: string): Promise<User | null> {
+    return await this.prisma.user.findUnique({
+      where: {
+        uuid,
+      },
+      include: {
+        enterprise: true,
       },
     });
   }

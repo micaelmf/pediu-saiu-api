@@ -1,9 +1,12 @@
+// src/domain/interfaces/UserInterface.ts
+
 import { EnterpriseInterface } from './EnterpriseInterface';
 
 export interface UserInterface {
   id?: number;
   uuid: string;
   email: string;
+  password: string;
   avatar?: string;
   cellPhone?: string;
   nickname: string;
