@@ -22,6 +22,22 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   res.status(500).json({ error: 'Ocorreu um erro no servidor' });
 });
 
+// Middleware para permitir CORS
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*'); // Ou especifique os domínios permitidos em vez de '*'
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+  );
+  
+  if (req.method === 'OPTIONS') {
+    res.sendStatus(200); // Responde com sucesso para as solicitações OPTIONS (pré-voo)
+  } else {
+    next();
+  }
+});
+
 // Use as rotas importadas
 app.use('/login', authRoutes);
 

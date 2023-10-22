@@ -25,19 +25,24 @@ export class AuthController {
         password,
         enterpriseId
       );
-      res.status(200).json({ token });
+      res
+        .cookie('jwtToken', token, {
+          httpOnly: true,
+          // secure: true, // para produção
+          maxAge: 60000 * 60 // 1h
+        })
+        .status(200)
+        .json({ message: "Login realizado com sucesso!", token: token});
     } catch (error) {
       //TODO: Disparar e-mail para usuário, informando que ouve uma tentativa de acesso que falhou
       //TODO: Suspender o acesso do usuário após 6 tentativas, durante 12h.
-      //TODO: Enviar e-mail para o usuário com detalhes sobre a tentiva de login e pedindo para entrar em contato com o suporte, caso suspeite de um ataque, 
-      
-      res
-        .status(401)
-        .json({
-          error: 'Authentication failed',
-          message:
-            'Desculpe, não foi possível fazer login com as informações fornecidas. Por favor, verifique seus detalhes de login para tentar novamente ou crie uma nova conta.',
-        });
+      //TODO: Enviar e-mail para o usuário com detalhes sobre a tentiva de login e pedindo para entrar em contato com o suporte, caso suspeite de um ataque,
+
+      res.status(401).json({
+        error: 'Authentication failed',
+        message:
+          'Desculpe, não foi possível fazer login com as informações fornecidas. Por favor, verifique seus detalhes de login para tentar novamente ou crie uma nova conta.',
+      });
     }
   }
 }
