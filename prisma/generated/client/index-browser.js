@@ -203,7 +203,31 @@ exports.Prisma.EnterpriseScalarFieldEnum = {
   status: 'status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt',
+  planId: 'planId'
+};
+
+exports.Prisma.PlanScalarFieldEnum = {
+  id: 'id',
+  uuid: 'uuid',
+  name: 'name',
+  description: 'description',
+  price: 'price',
+  isActive: 'isActive',
+  contractPeriod: 'contractPeriod',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
   deletedAt: 'deletedAt'
+};
+
+exports.Prisma.PromoPlanScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  discountPercent: 'discountPercent',
+  createdAt: 'createdAt',
+  endsAt: 'endsAt',
+  planId: 'planId'
 };
 
 exports.Prisma.ConfigurationScalarFieldEnum = {
@@ -297,6 +321,8 @@ exports.Prisma.ModelName = {
   OrderItem: 'OrderItem',
   OrderHistory: 'OrderHistory',
   Enterprise: 'Enterprise',
+  Plan: 'Plan',
+  PromoPlan: 'PromoPlan',
   Configuration: 'Configuration',
   Tag: 'Tag',
   ProductTag: 'ProductTag',

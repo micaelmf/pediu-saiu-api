@@ -138,6 +138,34 @@ model Enterprise {
     orders            Order[]
     promotions        Promotion[]
     combos            Combo[]
+    plan              Plan            @relation(fields: [planId], references: [id])
+    planId            Int
+}
+
+model Plan {
+    id             Int          @id @default(autoincrement())
+    uuid           String       @unique
+    name           String
+    description    String?
+    price          Float
+    isActive       Boolean      @default(true)
+    contractPeriod Int // Período de contrato em meses
+    createdAt      DateTime     @default(now())
+    updatedAt      DateTime     @updatedAt
+    deletedAt      DateTime?    @updatedAt
+    promos         PromoPlan[] // Um plano pode ter muitas promoções
+    Enterprise     Enterprise[]
+}
+
+model PromoPlan {
+    id              Int       @id @default(autoincrement())
+    name            String
+    description     String?
+    discountPercent Int // Percentual de desconto
+    createdAt       DateTime  @default(now())
+    endsAt          DateTime?
+    plan            Plan      @relation(fields: [planId], references: [id]) // Uma promoção pertence a um único plano
+    planId          Int
 }
 
 model Configuration {

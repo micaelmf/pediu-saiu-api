@@ -6,4 +6,5 @@ export interface EnterpriseInterface {
   email: string;
   description: string;
   status: string;
+  planId: number;
 }

@@ -20,6 +20,7 @@ export function createEnterpriseSeed(
     email: 'micaelmf@gmail.com',
     description: faker.lorem.sentence(),
     status: 'ativo',
+    planId: 1
   });
 
   for (let i = 0; i < enterprisesNumber; i++) {
@@ -31,6 +32,7 @@ export function createEnterpriseSeed(
       email: faker.internet.email(),
       description: faker.lorem.sentence(),
       status: statusOptions[Math.floor(Math.random() * statusOptions.length)],
+      planId: 1
     };
 
     enterprises.push(fakeEnterprise);

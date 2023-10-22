@@ -59,6 +59,16 @@ export type OrderHistory = $Result.DefaultSelection<Prisma.$OrderHistoryPayload>
  */
 export type Enterprise = $Result.DefaultSelection<Prisma.$EnterprisePayload>
 /**
+ * Model Plan
+ * 
+ */
+export type Plan = $Result.DefaultSelection<Prisma.$PlanPayload>
+/**
+ * Model PromoPlan
+ * 
+ */
+export type PromoPlan = $Result.DefaultSelection<Prisma.$PromoPlanPayload>
+/**
  * Model Configuration
  * 
  */
@@ -305,6 +315,26 @@ export class PrismaClient<
     * ```
     */
   get enterprise(): Prisma.EnterpriseDelegate<ExtArgs>;
+
+  /**
+   * `prisma.plan`: Exposes CRUD operations for the **Plan** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Plans
+    * const plans = await prisma.plan.findMany()
+    * ```
+    */
+  get plan(): Prisma.PlanDelegate<ExtArgs>;
+
+  /**
+   * `prisma.promoPlan`: Exposes CRUD operations for the **PromoPlan** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PromoPlans
+    * const promoPlans = await prisma.promoPlan.findMany()
+    * ```
+    */
+  get promoPlan(): Prisma.PromoPlanDelegate<ExtArgs>;
 
   /**
    * `prisma.configuration`: Exposes CRUD operations for the **Configuration** model.
@@ -854,6 +884,8 @@ export namespace Prisma {
     OrderItem: 'OrderItem',
     OrderHistory: 'OrderHistory',
     Enterprise: 'Enterprise',
+    Plan: 'Plan',
+    PromoPlan: 'PromoPlan',
     Configuration: 'Configuration',
     Tag: 'Tag',
     ProductTag: 'ProductTag',
@@ -877,7 +909,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'user' | 'category' | 'product' | 'accompaniment' | 'additional' | 'order' | 'orderItem' | 'orderHistory' | 'enterprise' | 'configuration' | 'tag' | 'productTag' | 'promotionTag' | 'promotion' | 'combo' | 'comboProducts'
+      modelProps: 'user' | 'category' | 'product' | 'accompaniment' | 'additional' | 'order' | 'orderItem' | 'orderHistory' | 'enterprise' | 'plan' | 'promoPlan' | 'configuration' | 'tag' | 'productTag' | 'promotionTag' | 'promotion' | 'combo' | 'comboProducts'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -1472,6 +1504,138 @@ export namespace Prisma {
           count: {
             args: Prisma.EnterpriseCountArgs<ExtArgs>,
             result: $Utils.Optional<EnterpriseCountAggregateOutputType> | number
+          }
+        }
+      }
+      Plan: {
+        payload: Prisma.$PlanPayload<ExtArgs>
+        fields: Prisma.PlanFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PlanFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PlanPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PlanFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PlanPayload>
+          }
+          findFirst: {
+            args: Prisma.PlanFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PlanPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PlanFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PlanPayload>
+          }
+          findMany: {
+            args: Prisma.PlanFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PlanPayload>[]
+          }
+          create: {
+            args: Prisma.PlanCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PlanPayload>
+          }
+          createMany: {
+            args: Prisma.PlanCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.PlanDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PlanPayload>
+          }
+          update: {
+            args: Prisma.PlanUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PlanPayload>
+          }
+          deleteMany: {
+            args: Prisma.PlanDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PlanUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.PlanUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PlanPayload>
+          }
+          aggregate: {
+            args: Prisma.PlanAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregatePlan>
+          }
+          groupBy: {
+            args: Prisma.PlanGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<PlanGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PlanCountArgs<ExtArgs>,
+            result: $Utils.Optional<PlanCountAggregateOutputType> | number
+          }
+        }
+      }
+      PromoPlan: {
+        payload: Prisma.$PromoPlanPayload<ExtArgs>
+        fields: Prisma.PromoPlanFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PromoPlanFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PromoPlanPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PromoPlanFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PromoPlanPayload>
+          }
+          findFirst: {
+            args: Prisma.PromoPlanFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PromoPlanPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PromoPlanFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PromoPlanPayload>
+          }
+          findMany: {
+            args: Prisma.PromoPlanFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PromoPlanPayload>[]
+          }
+          create: {
+            args: Prisma.PromoPlanCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PromoPlanPayload>
+          }
+          createMany: {
+            args: Prisma.PromoPlanCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.PromoPlanDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PromoPlanPayload>
+          }
+          update: {
+            args: Prisma.PromoPlanUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PromoPlanPayload>
+          }
+          deleteMany: {
+            args: Prisma.PromoPlanDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PromoPlanUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.PromoPlanUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PromoPlanPayload>
+          }
+          aggregate: {
+            args: Prisma.PromoPlanAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregatePromoPlan>
+          }
+          groupBy: {
+            args: Prisma.PromoPlanGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<PromoPlanGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PromoPlanCountArgs<ExtArgs>,
+            result: $Utils.Optional<PromoPlanCountAggregateOutputType> | number
           }
         }
       }
@@ -2421,6 +2585,50 @@ export namespace Prisma {
    */
   export type EnterpriseCountOutputTypeCountCombosArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     where?: ComboWhereInput
+  }
+
+
+
+  /**
+   * Count Type PlanCountOutputType
+   */
+
+  export type PlanCountOutputType = {
+    promos: number
+    Enterprise: number
+  }
+
+  export type PlanCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    promos?: boolean | PlanCountOutputTypeCountPromosArgs
+    Enterprise?: boolean | PlanCountOutputTypeCountEnterpriseArgs
+  }
+
+  // Custom InputTypes
+
+  /**
+   * PlanCountOutputType without action
+   */
+  export type PlanCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PlanCountOutputType
+     */
+    select?: PlanCountOutputTypeSelect<ExtArgs> | null
+  }
+
+
+  /**
+   * PlanCountOutputType without action
+   */
+  export type PlanCountOutputTypeCountPromosArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: PromoPlanWhereInput
+  }
+
+
+  /**
+   * PlanCountOutputType without action
+   */
+  export type PlanCountOutputTypeCountEnterpriseArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: EnterpriseWhereInput
   }
 
 
@@ -10909,10 +11117,12 @@ export namespace Prisma {
 
   export type EnterpriseAvgAggregateOutputType = {
     id: number | null
+    planId: number | null
   }
 
   export type EnterpriseSumAggregateOutputType = {
     id: number | null
+    planId: number | null
   }
 
   export type EnterpriseMinAggregateOutputType = {
@@ -10927,6 +11137,7 @@ export namespace Prisma {
     createdAt: Date | null
     updatedAt: Date | null
     deletedAt: Date | null
+    planId: number | null
   }
 
   export type EnterpriseMaxAggregateOutputType = {
@@ -10941,6 +11152,7 @@ export namespace Prisma {
     createdAt: Date | null
     updatedAt: Date | null
     deletedAt: Date | null
+    planId: number | null
   }
 
   export type EnterpriseCountAggregateOutputType = {
@@ -10955,16 +11167,19 @@ export namespace Prisma {
     createdAt: number
     updatedAt: number
     deletedAt: number
+    planId: number
     _all: number
   }
 
 
   export type EnterpriseAvgAggregateInputType = {
     id?: true
+    planId?: true
   }
 
   export type EnterpriseSumAggregateInputType = {
     id?: true
+    planId?: true
   }
 
   export type EnterpriseMinAggregateInputType = {
@@ -10979,6 +11194,7 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
+    planId?: true
   }
 
   export type EnterpriseMaxAggregateInputType = {
@@ -10993,6 +11209,7 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
+    planId?: true
   }
 
   export type EnterpriseCountAggregateInputType = {
@@ -11007,6 +11224,7 @@ export namespace Prisma {
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
+    planId?: true
     _all?: true
   }
 
@@ -11108,6 +11326,7 @@ export namespace Prisma {
     createdAt: Date
     updatedAt: Date
     deletedAt: Date | null
+    planId: number
     _count: EnterpriseCountAggregateOutputType | null
     _avg: EnterpriseAvgAggregateOutputType | null
     _sum: EnterpriseSumAggregateOutputType | null
@@ -11141,6 +11360,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
+    planId?: boolean
     users?: boolean | Enterprise$usersArgs<ExtArgs>
     categories?: boolean | Enterprise$categoriesArgs<ExtArgs>
     products?: boolean | Enterprise$productsArgs<ExtArgs>
@@ -11148,6 +11368,7 @@ export namespace Prisma {
     orders?: boolean | Enterprise$ordersArgs<ExtArgs>
     promotions?: boolean | Enterprise$promotionsArgs<ExtArgs>
     combos?: boolean | Enterprise$combosArgs<ExtArgs>
+    plan?: boolean | PlanDefaultArgs<ExtArgs>
     _count?: boolean | EnterpriseCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["enterprise"]>
 
@@ -11163,6 +11384,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
+    planId?: boolean
   }
 
   export type EnterpriseInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
@@ -11173,6 +11395,7 @@ export namespace Prisma {
     orders?: boolean | Enterprise$ordersArgs<ExtArgs>
     promotions?: boolean | Enterprise$promotionsArgs<ExtArgs>
     combos?: boolean | Enterprise$combosArgs<ExtArgs>
+    plan?: boolean | PlanDefaultArgs<ExtArgs>
     _count?: boolean | EnterpriseCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -11187,6 +11410,7 @@ export namespace Prisma {
       orders: Prisma.$OrderPayload<ExtArgs>[]
       promotions: Prisma.$PromotionPayload<ExtArgs>[]
       combos: Prisma.$ComboPayload<ExtArgs>[]
+      plan: Prisma.$PlanPayload<ExtArgs>
     }
     scalars: $Extensions.GetResult<{
       id: number
@@ -11200,6 +11424,7 @@ export namespace Prisma {
       createdAt: Date
       updatedAt: Date
       deletedAt: Date | null
+      planId: number
     }, ExtArgs["result"]["enterprise"]>
     composites: {}
   }
@@ -11579,6 +11804,8 @@ export namespace Prisma {
 
     combos<T extends Enterprise$combosArgs<ExtArgs> = {}>(args?: Subset<T, Enterprise$combosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ComboPayload<ExtArgs>, T, 'findMany'> | Null>;
 
+    plan<T extends PlanDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PlanDefaultArgs<ExtArgs>>): Prisma__PlanClient<$Result.GetResult<Prisma.$PlanPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11618,6 +11845,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"Enterprise", 'DateTime'>
     readonly updatedAt: FieldRef<"Enterprise", 'DateTime'>
     readonly deletedAt: FieldRef<"Enterprise", 'DateTime'>
+    readonly planId: FieldRef<"Enterprise", 'Int'>
   }
     
 
@@ -12088,6 +12316,2052 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well.
      */
     include?: EnterpriseInclude<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model Plan
+   */
+
+  export type AggregatePlan = {
+    _count: PlanCountAggregateOutputType | null
+    _avg: PlanAvgAggregateOutputType | null
+    _sum: PlanSumAggregateOutputType | null
+    _min: PlanMinAggregateOutputType | null
+    _max: PlanMaxAggregateOutputType | null
+  }
+
+  export type PlanAvgAggregateOutputType = {
+    id: number | null
+    price: number | null
+    contractPeriod: number | null
+  }
+
+  export type PlanSumAggregateOutputType = {
+    id: number | null
+    price: number | null
+    contractPeriod: number | null
+  }
+
+  export type PlanMinAggregateOutputType = {
+    id: number | null
+    uuid: string | null
+    name: string | null
+    description: string | null
+    price: number | null
+    isActive: boolean | null
+    contractPeriod: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    deletedAt: Date | null
+  }
+
+  export type PlanMaxAggregateOutputType = {
+    id: number | null
+    uuid: string | null
+    name: string | null
+    description: string | null
+    price: number | null
+    isActive: boolean | null
+    contractPeriod: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    deletedAt: Date | null
+  }
+
+  export type PlanCountAggregateOutputType = {
+    id: number
+    uuid: number
+    name: number
+    description: number
+    price: number
+    isActive: number
+    contractPeriod: number
+    createdAt: number
+    updatedAt: number
+    deletedAt: number
+    _all: number
+  }
+
+
+  export type PlanAvgAggregateInputType = {
+    id?: true
+    price?: true
+    contractPeriod?: true
+  }
+
+  export type PlanSumAggregateInputType = {
+    id?: true
+    price?: true
+    contractPeriod?: true
+  }
+
+  export type PlanMinAggregateInputType = {
+    id?: true
+    uuid?: true
+    name?: true
+    description?: true
+    price?: true
+    isActive?: true
+    contractPeriod?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+  }
+
+  export type PlanMaxAggregateInputType = {
+    id?: true
+    uuid?: true
+    name?: true
+    description?: true
+    price?: true
+    isActive?: true
+    contractPeriod?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+  }
+
+  export type PlanCountAggregateInputType = {
+    id?: true
+    uuid?: true
+    name?: true
+    description?: true
+    price?: true
+    isActive?: true
+    contractPeriod?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+    _all?: true
+  }
+
+  export type PlanAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Plan to aggregate.
+     */
+    where?: PlanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Plans to fetch.
+     */
+    orderBy?: PlanOrderByWithRelationInput | PlanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PlanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Plans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Plans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Plans
+    **/
+    _count?: true | PlanCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PlanAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PlanSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PlanMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PlanMaxAggregateInputType
+  }
+
+  export type GetPlanAggregateType<T extends PlanAggregateArgs> = {
+        [P in keyof T & keyof AggregatePlan]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePlan[P]>
+      : GetScalarType<T[P], AggregatePlan[P]>
+  }
+
+
+
+
+  export type PlanGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: PlanWhereInput
+    orderBy?: PlanOrderByWithAggregationInput | PlanOrderByWithAggregationInput[]
+    by: PlanScalarFieldEnum[] | PlanScalarFieldEnum
+    having?: PlanScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PlanCountAggregateInputType | true
+    _avg?: PlanAvgAggregateInputType
+    _sum?: PlanSumAggregateInputType
+    _min?: PlanMinAggregateInputType
+    _max?: PlanMaxAggregateInputType
+  }
+
+  export type PlanGroupByOutputType = {
+    id: number
+    uuid: string
+    name: string
+    description: string | null
+    price: number
+    isActive: boolean
+    contractPeriod: number
+    createdAt: Date
+    updatedAt: Date
+    deletedAt: Date | null
+    _count: PlanCountAggregateOutputType | null
+    _avg: PlanAvgAggregateOutputType | null
+    _sum: PlanSumAggregateOutputType | null
+    _min: PlanMinAggregateOutputType | null
+    _max: PlanMaxAggregateOutputType | null
+  }
+
+  type GetPlanGroupByPayload<T extends PlanGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PlanGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PlanGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PlanGroupByOutputType[P]>
+            : GetScalarType<T[P], PlanGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PlanSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    uuid?: boolean
+    name?: boolean
+    description?: boolean
+    price?: boolean
+    isActive?: boolean
+    contractPeriod?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+    promos?: boolean | Plan$promosArgs<ExtArgs>
+    Enterprise?: boolean | Plan$EnterpriseArgs<ExtArgs>
+    _count?: boolean | PlanCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["plan"]>
+
+  export type PlanSelectScalar = {
+    id?: boolean
+    uuid?: boolean
+    name?: boolean
+    description?: boolean
+    price?: boolean
+    isActive?: boolean
+    contractPeriod?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+  }
+
+  export type PlanInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    promos?: boolean | Plan$promosArgs<ExtArgs>
+    Enterprise?: boolean | Plan$EnterpriseArgs<ExtArgs>
+    _count?: boolean | PlanCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+
+  export type $PlanPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    name: "Plan"
+    objects: {
+      promos: Prisma.$PromoPlanPayload<ExtArgs>[]
+      Enterprise: Prisma.$EnterprisePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetResult<{
+      id: number
+      uuid: string
+      name: string
+      description: string | null
+      price: number
+      isActive: boolean
+      contractPeriod: number
+      createdAt: Date
+      updatedAt: Date
+      deletedAt: Date | null
+    }, ExtArgs["result"]["plan"]>
+    composites: {}
+  }
+
+
+  type PlanGetPayload<S extends boolean | null | undefined | PlanDefaultArgs> = $Result.GetResult<Prisma.$PlanPayload, S>
+
+  type PlanCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<PlanFindManyArgs, 'select' | 'include'> & {
+      select?: PlanCountAggregateInputType | true
+    }
+
+  export interface PlanDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Plan'], meta: { name: 'Plan' } }
+    /**
+     * Find zero or one Plan that matches the filter.
+     * @param {PlanFindUniqueArgs} args - Arguments to find a Plan
+     * @example
+     * // Get one Plan
+     * const plan = await prisma.plan.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends PlanFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, PlanFindUniqueArgs<ExtArgs>>
+    ): Prisma__PlanClient<$Result.GetResult<Prisma.$PlanPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Plan that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {PlanFindUniqueOrThrowArgs} args - Arguments to find a Plan
+     * @example
+     * // Get one Plan
+     * const plan = await prisma.plan.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends PlanFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, PlanFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__PlanClient<$Result.GetResult<Prisma.$PlanPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Plan that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlanFindFirstArgs} args - Arguments to find a Plan
+     * @example
+     * // Get one Plan
+     * const plan = await prisma.plan.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends PlanFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, PlanFindFirstArgs<ExtArgs>>
+    ): Prisma__PlanClient<$Result.GetResult<Prisma.$PlanPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Plan that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlanFindFirstOrThrowArgs} args - Arguments to find a Plan
+     * @example
+     * // Get one Plan
+     * const plan = await prisma.plan.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends PlanFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, PlanFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__PlanClient<$Result.GetResult<Prisma.$PlanPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Plans that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlanFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Plans
+     * const plans = await prisma.plan.findMany()
+     * 
+     * // Get first 10 Plans
+     * const plans = await prisma.plan.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const planWithIdOnly = await prisma.plan.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends PlanFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, PlanFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlanPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Plan.
+     * @param {PlanCreateArgs} args - Arguments to create a Plan.
+     * @example
+     * // Create one Plan
+     * const Plan = await prisma.plan.create({
+     *   data: {
+     *     // ... data to create a Plan
+     *   }
+     * })
+     * 
+    **/
+    create<T extends PlanCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, PlanCreateArgs<ExtArgs>>
+    ): Prisma__PlanClient<$Result.GetResult<Prisma.$PlanPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Plans.
+     *     @param {PlanCreateManyArgs} args - Arguments to create many Plans.
+     *     @example
+     *     // Create many Plans
+     *     const plan = await prisma.plan.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends PlanCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, PlanCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Plan.
+     * @param {PlanDeleteArgs} args - Arguments to delete one Plan.
+     * @example
+     * // Delete one Plan
+     * const Plan = await prisma.plan.delete({
+     *   where: {
+     *     // ... filter to delete one Plan
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends PlanDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, PlanDeleteArgs<ExtArgs>>
+    ): Prisma__PlanClient<$Result.GetResult<Prisma.$PlanPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Plan.
+     * @param {PlanUpdateArgs} args - Arguments to update one Plan.
+     * @example
+     * // Update one Plan
+     * const plan = await prisma.plan.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends PlanUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, PlanUpdateArgs<ExtArgs>>
+    ): Prisma__PlanClient<$Result.GetResult<Prisma.$PlanPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Plans.
+     * @param {PlanDeleteManyArgs} args - Arguments to filter Plans to delete.
+     * @example
+     * // Delete a few Plans
+     * const { count } = await prisma.plan.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends PlanDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, PlanDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Plans.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlanUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Plans
+     * const plan = await prisma.plan.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends PlanUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, PlanUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Plan.
+     * @param {PlanUpsertArgs} args - Arguments to update or create a Plan.
+     * @example
+     * // Update or create a Plan
+     * const plan = await prisma.plan.upsert({
+     *   create: {
+     *     // ... data to create a Plan
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Plan we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends PlanUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, PlanUpsertArgs<ExtArgs>>
+    ): Prisma__PlanClient<$Result.GetResult<Prisma.$PlanPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Plans.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlanCountArgs} args - Arguments to filter Plans to count.
+     * @example
+     * // Count the number of Plans
+     * const count = await prisma.plan.count({
+     *   where: {
+     *     // ... the filter for the Plans we want to count
+     *   }
+     * })
+    **/
+    count<T extends PlanCountArgs>(
+      args?: Subset<T, PlanCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PlanCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Plan.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlanAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PlanAggregateArgs>(args: Subset<T, PlanAggregateArgs>): Prisma.PrismaPromise<GetPlanAggregateType<T>>
+
+    /**
+     * Group by Plan.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlanGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PlanGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PlanGroupByArgs['orderBy'] }
+        : { orderBy?: PlanGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PlanGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPlanGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Plan model
+   */
+  readonly fields: PlanFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Plan.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PlanClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    promos<T extends Plan$promosArgs<ExtArgs> = {}>(args?: Subset<T, Plan$promosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PromoPlanPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    Enterprise<T extends Plan$EnterpriseArgs<ExtArgs> = {}>(args?: Subset<T, Plan$EnterpriseArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EnterprisePayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the Plan model
+   */ 
+  interface PlanFieldRefs {
+    readonly id: FieldRef<"Plan", 'Int'>
+    readonly uuid: FieldRef<"Plan", 'String'>
+    readonly name: FieldRef<"Plan", 'String'>
+    readonly description: FieldRef<"Plan", 'String'>
+    readonly price: FieldRef<"Plan", 'Float'>
+    readonly isActive: FieldRef<"Plan", 'Boolean'>
+    readonly contractPeriod: FieldRef<"Plan", 'Int'>
+    readonly createdAt: FieldRef<"Plan", 'DateTime'>
+    readonly updatedAt: FieldRef<"Plan", 'DateTime'>
+    readonly deletedAt: FieldRef<"Plan", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * Plan findUnique
+   */
+  export type PlanFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Plan
+     */
+    select?: PlanSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: PlanInclude<ExtArgs> | null
+    /**
+     * Filter, which Plan to fetch.
+     */
+    where: PlanWhereUniqueInput
+  }
+
+
+  /**
+   * Plan findUniqueOrThrow
+   */
+  export type PlanFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Plan
+     */
+    select?: PlanSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: PlanInclude<ExtArgs> | null
+    /**
+     * Filter, which Plan to fetch.
+     */
+    where: PlanWhereUniqueInput
+  }
+
+
+  /**
+   * Plan findFirst
+   */
+  export type PlanFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Plan
+     */
+    select?: PlanSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: PlanInclude<ExtArgs> | null
+    /**
+     * Filter, which Plan to fetch.
+     */
+    where?: PlanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Plans to fetch.
+     */
+    orderBy?: PlanOrderByWithRelationInput | PlanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Plans.
+     */
+    cursor?: PlanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Plans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Plans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Plans.
+     */
+    distinct?: PlanScalarFieldEnum | PlanScalarFieldEnum[]
+  }
+
+
+  /**
+   * Plan findFirstOrThrow
+   */
+  export type PlanFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Plan
+     */
+    select?: PlanSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: PlanInclude<ExtArgs> | null
+    /**
+     * Filter, which Plan to fetch.
+     */
+    where?: PlanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Plans to fetch.
+     */
+    orderBy?: PlanOrderByWithRelationInput | PlanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Plans.
+     */
+    cursor?: PlanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Plans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Plans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Plans.
+     */
+    distinct?: PlanScalarFieldEnum | PlanScalarFieldEnum[]
+  }
+
+
+  /**
+   * Plan findMany
+   */
+  export type PlanFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Plan
+     */
+    select?: PlanSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: PlanInclude<ExtArgs> | null
+    /**
+     * Filter, which Plans to fetch.
+     */
+    where?: PlanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Plans to fetch.
+     */
+    orderBy?: PlanOrderByWithRelationInput | PlanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Plans.
+     */
+    cursor?: PlanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Plans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Plans.
+     */
+    skip?: number
+    distinct?: PlanScalarFieldEnum | PlanScalarFieldEnum[]
+  }
+
+
+  /**
+   * Plan create
+   */
+  export type PlanCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Plan
+     */
+    select?: PlanSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: PlanInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Plan.
+     */
+    data: XOR<PlanCreateInput, PlanUncheckedCreateInput>
+  }
+
+
+  /**
+   * Plan createMany
+   */
+  export type PlanCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Plans.
+     */
+    data: PlanCreateManyInput | PlanCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * Plan update
+   */
+  export type PlanUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Plan
+     */
+    select?: PlanSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: PlanInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Plan.
+     */
+    data: XOR<PlanUpdateInput, PlanUncheckedUpdateInput>
+    /**
+     * Choose, which Plan to update.
+     */
+    where: PlanWhereUniqueInput
+  }
+
+
+  /**
+   * Plan updateMany
+   */
+  export type PlanUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Plans.
+     */
+    data: XOR<PlanUpdateManyMutationInput, PlanUncheckedUpdateManyInput>
+    /**
+     * Filter which Plans to update
+     */
+    where?: PlanWhereInput
+  }
+
+
+  /**
+   * Plan upsert
+   */
+  export type PlanUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Plan
+     */
+    select?: PlanSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: PlanInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Plan to update in case it exists.
+     */
+    where: PlanWhereUniqueInput
+    /**
+     * In case the Plan found by the `where` argument doesn't exist, create a new Plan with this data.
+     */
+    create: XOR<PlanCreateInput, PlanUncheckedCreateInput>
+    /**
+     * In case the Plan was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PlanUpdateInput, PlanUncheckedUpdateInput>
+  }
+
+
+  /**
+   * Plan delete
+   */
+  export type PlanDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Plan
+     */
+    select?: PlanSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: PlanInclude<ExtArgs> | null
+    /**
+     * Filter which Plan to delete.
+     */
+    where: PlanWhereUniqueInput
+  }
+
+
+  /**
+   * Plan deleteMany
+   */
+  export type PlanDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Plans to delete
+     */
+    where?: PlanWhereInput
+  }
+
+
+  /**
+   * Plan.promos
+   */
+  export type Plan$promosArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromoPlan
+     */
+    select?: PromoPlanSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: PromoPlanInclude<ExtArgs> | null
+    where?: PromoPlanWhereInput
+    orderBy?: PromoPlanOrderByWithRelationInput | PromoPlanOrderByWithRelationInput[]
+    cursor?: PromoPlanWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PromoPlanScalarFieldEnum | PromoPlanScalarFieldEnum[]
+  }
+
+
+  /**
+   * Plan.Enterprise
+   */
+  export type Plan$EnterpriseArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Enterprise
+     */
+    select?: EnterpriseSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: EnterpriseInclude<ExtArgs> | null
+    where?: EnterpriseWhereInput
+    orderBy?: EnterpriseOrderByWithRelationInput | EnterpriseOrderByWithRelationInput[]
+    cursor?: EnterpriseWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: EnterpriseScalarFieldEnum | EnterpriseScalarFieldEnum[]
+  }
+
+
+  /**
+   * Plan without action
+   */
+  export type PlanDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Plan
+     */
+    select?: PlanSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: PlanInclude<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model PromoPlan
+   */
+
+  export type AggregatePromoPlan = {
+    _count: PromoPlanCountAggregateOutputType | null
+    _avg: PromoPlanAvgAggregateOutputType | null
+    _sum: PromoPlanSumAggregateOutputType | null
+    _min: PromoPlanMinAggregateOutputType | null
+    _max: PromoPlanMaxAggregateOutputType | null
+  }
+
+  export type PromoPlanAvgAggregateOutputType = {
+    id: number | null
+    discountPercent: number | null
+    planId: number | null
+  }
+
+  export type PromoPlanSumAggregateOutputType = {
+    id: number | null
+    discountPercent: number | null
+    planId: number | null
+  }
+
+  export type PromoPlanMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    description: string | null
+    discountPercent: number | null
+    createdAt: Date | null
+    endsAt: Date | null
+    planId: number | null
+  }
+
+  export type PromoPlanMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    description: string | null
+    discountPercent: number | null
+    createdAt: Date | null
+    endsAt: Date | null
+    planId: number | null
+  }
+
+  export type PromoPlanCountAggregateOutputType = {
+    id: number
+    name: number
+    description: number
+    discountPercent: number
+    createdAt: number
+    endsAt: number
+    planId: number
+    _all: number
+  }
+
+
+  export type PromoPlanAvgAggregateInputType = {
+    id?: true
+    discountPercent?: true
+    planId?: true
+  }
+
+  export type PromoPlanSumAggregateInputType = {
+    id?: true
+    discountPercent?: true
+    planId?: true
+  }
+
+  export type PromoPlanMinAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    discountPercent?: true
+    createdAt?: true
+    endsAt?: true
+    planId?: true
+  }
+
+  export type PromoPlanMaxAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    discountPercent?: true
+    createdAt?: true
+    endsAt?: true
+    planId?: true
+  }
+
+  export type PromoPlanCountAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    discountPercent?: true
+    createdAt?: true
+    endsAt?: true
+    planId?: true
+    _all?: true
+  }
+
+  export type PromoPlanAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PromoPlan to aggregate.
+     */
+    where?: PromoPlanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PromoPlans to fetch.
+     */
+    orderBy?: PromoPlanOrderByWithRelationInput | PromoPlanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PromoPlanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PromoPlans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PromoPlans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PromoPlans
+    **/
+    _count?: true | PromoPlanCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PromoPlanAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PromoPlanSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PromoPlanMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PromoPlanMaxAggregateInputType
+  }
+
+  export type GetPromoPlanAggregateType<T extends PromoPlanAggregateArgs> = {
+        [P in keyof T & keyof AggregatePromoPlan]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePromoPlan[P]>
+      : GetScalarType<T[P], AggregatePromoPlan[P]>
+  }
+
+
+
+
+  export type PromoPlanGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    where?: PromoPlanWhereInput
+    orderBy?: PromoPlanOrderByWithAggregationInput | PromoPlanOrderByWithAggregationInput[]
+    by: PromoPlanScalarFieldEnum[] | PromoPlanScalarFieldEnum
+    having?: PromoPlanScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PromoPlanCountAggregateInputType | true
+    _avg?: PromoPlanAvgAggregateInputType
+    _sum?: PromoPlanSumAggregateInputType
+    _min?: PromoPlanMinAggregateInputType
+    _max?: PromoPlanMaxAggregateInputType
+  }
+
+  export type PromoPlanGroupByOutputType = {
+    id: number
+    name: string
+    description: string | null
+    discountPercent: number
+    createdAt: Date
+    endsAt: Date | null
+    planId: number
+    _count: PromoPlanCountAggregateOutputType | null
+    _avg: PromoPlanAvgAggregateOutputType | null
+    _sum: PromoPlanSumAggregateOutputType | null
+    _min: PromoPlanMinAggregateOutputType | null
+    _max: PromoPlanMaxAggregateOutputType | null
+  }
+
+  type GetPromoPlanGroupByPayload<T extends PromoPlanGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PromoPlanGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PromoPlanGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PromoPlanGroupByOutputType[P]>
+            : GetScalarType<T[P], PromoPlanGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PromoPlanSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    discountPercent?: boolean
+    createdAt?: boolean
+    endsAt?: boolean
+    planId?: boolean
+    plan?: boolean | PlanDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["promoPlan"]>
+
+  export type PromoPlanSelectScalar = {
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    discountPercent?: boolean
+    createdAt?: boolean
+    endsAt?: boolean
+    planId?: boolean
+  }
+
+  export type PromoPlanInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    plan?: boolean | PlanDefaultArgs<ExtArgs>
+  }
+
+
+  export type $PromoPlanPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    name: "PromoPlan"
+    objects: {
+      plan: Prisma.$PlanPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetResult<{
+      id: number
+      name: string
+      description: string | null
+      discountPercent: number
+      createdAt: Date
+      endsAt: Date | null
+      planId: number
+    }, ExtArgs["result"]["promoPlan"]>
+    composites: {}
+  }
+
+
+  type PromoPlanGetPayload<S extends boolean | null | undefined | PromoPlanDefaultArgs> = $Result.GetResult<Prisma.$PromoPlanPayload, S>
+
+  type PromoPlanCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
+    Omit<PromoPlanFindManyArgs, 'select' | 'include'> & {
+      select?: PromoPlanCountAggregateInputType | true
+    }
+
+  export interface PromoPlanDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PromoPlan'], meta: { name: 'PromoPlan' } }
+    /**
+     * Find zero or one PromoPlan that matches the filter.
+     * @param {PromoPlanFindUniqueArgs} args - Arguments to find a PromoPlan
+     * @example
+     * // Get one PromoPlan
+     * const promoPlan = await prisma.promoPlan.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends PromoPlanFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, PromoPlanFindUniqueArgs<ExtArgs>>
+    ): Prisma__PromoPlanClient<$Result.GetResult<Prisma.$PromoPlanPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one PromoPlan that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {PromoPlanFindUniqueOrThrowArgs} args - Arguments to find a PromoPlan
+     * @example
+     * // Get one PromoPlan
+     * const promoPlan = await prisma.promoPlan.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends PromoPlanFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, PromoPlanFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__PromoPlanClient<$Result.GetResult<Prisma.$PromoPlanPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first PromoPlan that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PromoPlanFindFirstArgs} args - Arguments to find a PromoPlan
+     * @example
+     * // Get one PromoPlan
+     * const promoPlan = await prisma.promoPlan.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends PromoPlanFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, PromoPlanFindFirstArgs<ExtArgs>>
+    ): Prisma__PromoPlanClient<$Result.GetResult<Prisma.$PromoPlanPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first PromoPlan that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PromoPlanFindFirstOrThrowArgs} args - Arguments to find a PromoPlan
+     * @example
+     * // Get one PromoPlan
+     * const promoPlan = await prisma.promoPlan.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends PromoPlanFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, PromoPlanFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__PromoPlanClient<$Result.GetResult<Prisma.$PromoPlanPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more PromoPlans that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PromoPlanFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PromoPlans
+     * const promoPlans = await prisma.promoPlan.findMany()
+     * 
+     * // Get first 10 PromoPlans
+     * const promoPlans = await prisma.promoPlan.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const promoPlanWithIdOnly = await prisma.promoPlan.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends PromoPlanFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, PromoPlanFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PromoPlanPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a PromoPlan.
+     * @param {PromoPlanCreateArgs} args - Arguments to create a PromoPlan.
+     * @example
+     * // Create one PromoPlan
+     * const PromoPlan = await prisma.promoPlan.create({
+     *   data: {
+     *     // ... data to create a PromoPlan
+     *   }
+     * })
+     * 
+    **/
+    create<T extends PromoPlanCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, PromoPlanCreateArgs<ExtArgs>>
+    ): Prisma__PromoPlanClient<$Result.GetResult<Prisma.$PromoPlanPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many PromoPlans.
+     *     @param {PromoPlanCreateManyArgs} args - Arguments to create many PromoPlans.
+     *     @example
+     *     // Create many PromoPlans
+     *     const promoPlan = await prisma.promoPlan.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends PromoPlanCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, PromoPlanCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a PromoPlan.
+     * @param {PromoPlanDeleteArgs} args - Arguments to delete one PromoPlan.
+     * @example
+     * // Delete one PromoPlan
+     * const PromoPlan = await prisma.promoPlan.delete({
+     *   where: {
+     *     // ... filter to delete one PromoPlan
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends PromoPlanDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, PromoPlanDeleteArgs<ExtArgs>>
+    ): Prisma__PromoPlanClient<$Result.GetResult<Prisma.$PromoPlanPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one PromoPlan.
+     * @param {PromoPlanUpdateArgs} args - Arguments to update one PromoPlan.
+     * @example
+     * // Update one PromoPlan
+     * const promoPlan = await prisma.promoPlan.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends PromoPlanUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, PromoPlanUpdateArgs<ExtArgs>>
+    ): Prisma__PromoPlanClient<$Result.GetResult<Prisma.$PromoPlanPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more PromoPlans.
+     * @param {PromoPlanDeleteManyArgs} args - Arguments to filter PromoPlans to delete.
+     * @example
+     * // Delete a few PromoPlans
+     * const { count } = await prisma.promoPlan.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends PromoPlanDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, PromoPlanDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PromoPlans.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PromoPlanUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PromoPlans
+     * const promoPlan = await prisma.promoPlan.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends PromoPlanUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, PromoPlanUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one PromoPlan.
+     * @param {PromoPlanUpsertArgs} args - Arguments to update or create a PromoPlan.
+     * @example
+     * // Update or create a PromoPlan
+     * const promoPlan = await prisma.promoPlan.upsert({
+     *   create: {
+     *     // ... data to create a PromoPlan
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PromoPlan we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends PromoPlanUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, PromoPlanUpsertArgs<ExtArgs>>
+    ): Prisma__PromoPlanClient<$Result.GetResult<Prisma.$PromoPlanPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of PromoPlans.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PromoPlanCountArgs} args - Arguments to filter PromoPlans to count.
+     * @example
+     * // Count the number of PromoPlans
+     * const count = await prisma.promoPlan.count({
+     *   where: {
+     *     // ... the filter for the PromoPlans we want to count
+     *   }
+     * })
+    **/
+    count<T extends PromoPlanCountArgs>(
+      args?: Subset<T, PromoPlanCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PromoPlanCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PromoPlan.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PromoPlanAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PromoPlanAggregateArgs>(args: Subset<T, PromoPlanAggregateArgs>): Prisma.PrismaPromise<GetPromoPlanAggregateType<T>>
+
+    /**
+     * Group by PromoPlan.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PromoPlanGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PromoPlanGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PromoPlanGroupByArgs['orderBy'] }
+        : { orderBy?: PromoPlanGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PromoPlanGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPromoPlanGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PromoPlan model
+   */
+  readonly fields: PromoPlanFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PromoPlan.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PromoPlanClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    plan<T extends PlanDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PlanDefaultArgs<ExtArgs>>): Prisma__PlanClient<$Result.GetResult<Prisma.$PlanPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the PromoPlan model
+   */ 
+  interface PromoPlanFieldRefs {
+    readonly id: FieldRef<"PromoPlan", 'Int'>
+    readonly name: FieldRef<"PromoPlan", 'String'>
+    readonly description: FieldRef<"PromoPlan", 'String'>
+    readonly discountPercent: FieldRef<"PromoPlan", 'Int'>
+    readonly createdAt: FieldRef<"PromoPlan", 'DateTime'>
+    readonly endsAt: FieldRef<"PromoPlan", 'DateTime'>
+    readonly planId: FieldRef<"PromoPlan", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * PromoPlan findUnique
+   */
+  export type PromoPlanFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromoPlan
+     */
+    select?: PromoPlanSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: PromoPlanInclude<ExtArgs> | null
+    /**
+     * Filter, which PromoPlan to fetch.
+     */
+    where: PromoPlanWhereUniqueInput
+  }
+
+
+  /**
+   * PromoPlan findUniqueOrThrow
+   */
+  export type PromoPlanFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromoPlan
+     */
+    select?: PromoPlanSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: PromoPlanInclude<ExtArgs> | null
+    /**
+     * Filter, which PromoPlan to fetch.
+     */
+    where: PromoPlanWhereUniqueInput
+  }
+
+
+  /**
+   * PromoPlan findFirst
+   */
+  export type PromoPlanFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromoPlan
+     */
+    select?: PromoPlanSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: PromoPlanInclude<ExtArgs> | null
+    /**
+     * Filter, which PromoPlan to fetch.
+     */
+    where?: PromoPlanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PromoPlans to fetch.
+     */
+    orderBy?: PromoPlanOrderByWithRelationInput | PromoPlanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PromoPlans.
+     */
+    cursor?: PromoPlanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PromoPlans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PromoPlans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PromoPlans.
+     */
+    distinct?: PromoPlanScalarFieldEnum | PromoPlanScalarFieldEnum[]
+  }
+
+
+  /**
+   * PromoPlan findFirstOrThrow
+   */
+  export type PromoPlanFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromoPlan
+     */
+    select?: PromoPlanSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: PromoPlanInclude<ExtArgs> | null
+    /**
+     * Filter, which PromoPlan to fetch.
+     */
+    where?: PromoPlanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PromoPlans to fetch.
+     */
+    orderBy?: PromoPlanOrderByWithRelationInput | PromoPlanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PromoPlans.
+     */
+    cursor?: PromoPlanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PromoPlans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PromoPlans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PromoPlans.
+     */
+    distinct?: PromoPlanScalarFieldEnum | PromoPlanScalarFieldEnum[]
+  }
+
+
+  /**
+   * PromoPlan findMany
+   */
+  export type PromoPlanFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromoPlan
+     */
+    select?: PromoPlanSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: PromoPlanInclude<ExtArgs> | null
+    /**
+     * Filter, which PromoPlans to fetch.
+     */
+    where?: PromoPlanWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PromoPlans to fetch.
+     */
+    orderBy?: PromoPlanOrderByWithRelationInput | PromoPlanOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PromoPlans.
+     */
+    cursor?: PromoPlanWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PromoPlans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PromoPlans.
+     */
+    skip?: number
+    distinct?: PromoPlanScalarFieldEnum | PromoPlanScalarFieldEnum[]
+  }
+
+
+  /**
+   * PromoPlan create
+   */
+  export type PromoPlanCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromoPlan
+     */
+    select?: PromoPlanSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: PromoPlanInclude<ExtArgs> | null
+    /**
+     * The data needed to create a PromoPlan.
+     */
+    data: XOR<PromoPlanCreateInput, PromoPlanUncheckedCreateInput>
+  }
+
+
+  /**
+   * PromoPlan createMany
+   */
+  export type PromoPlanCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PromoPlans.
+     */
+    data: PromoPlanCreateManyInput | PromoPlanCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * PromoPlan update
+   */
+  export type PromoPlanUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromoPlan
+     */
+    select?: PromoPlanSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: PromoPlanInclude<ExtArgs> | null
+    /**
+     * The data needed to update a PromoPlan.
+     */
+    data: XOR<PromoPlanUpdateInput, PromoPlanUncheckedUpdateInput>
+    /**
+     * Choose, which PromoPlan to update.
+     */
+    where: PromoPlanWhereUniqueInput
+  }
+
+
+  /**
+   * PromoPlan updateMany
+   */
+  export type PromoPlanUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PromoPlans.
+     */
+    data: XOR<PromoPlanUpdateManyMutationInput, PromoPlanUncheckedUpdateManyInput>
+    /**
+     * Filter which PromoPlans to update
+     */
+    where?: PromoPlanWhereInput
+  }
+
+
+  /**
+   * PromoPlan upsert
+   */
+  export type PromoPlanUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromoPlan
+     */
+    select?: PromoPlanSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: PromoPlanInclude<ExtArgs> | null
+    /**
+     * The filter to search for the PromoPlan to update in case it exists.
+     */
+    where: PromoPlanWhereUniqueInput
+    /**
+     * In case the PromoPlan found by the `where` argument doesn't exist, create a new PromoPlan with this data.
+     */
+    create: XOR<PromoPlanCreateInput, PromoPlanUncheckedCreateInput>
+    /**
+     * In case the PromoPlan was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PromoPlanUpdateInput, PromoPlanUncheckedUpdateInput>
+  }
+
+
+  /**
+   * PromoPlan delete
+   */
+  export type PromoPlanDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromoPlan
+     */
+    select?: PromoPlanSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: PromoPlanInclude<ExtArgs> | null
+    /**
+     * Filter which PromoPlan to delete.
+     */
+    where: PromoPlanWhereUniqueInput
+  }
+
+
+  /**
+   * PromoPlan deleteMany
+   */
+  export type PromoPlanDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PromoPlans to delete
+     */
+    where?: PromoPlanWhereInput
+  }
+
+
+  /**
+   * PromoPlan without action
+   */
+  export type PromoPlanDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromoPlan
+     */
+    select?: PromoPlanSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: PromoPlanInclude<ExtArgs> | null
   }
 
 
@@ -19277,10 +21551,40 @@ export namespace Prisma {
     status: 'status',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
-    deletedAt: 'deletedAt'
+    deletedAt: 'deletedAt',
+    planId: 'planId'
   };
 
   export type EnterpriseScalarFieldEnum = (typeof EnterpriseScalarFieldEnum)[keyof typeof EnterpriseScalarFieldEnum]
+
+
+  export const PlanScalarFieldEnum: {
+    id: 'id',
+    uuid: 'uuid',
+    name: 'name',
+    description: 'description',
+    price: 'price',
+    isActive: 'isActive',
+    contractPeriod: 'contractPeriod',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    deletedAt: 'deletedAt'
+  };
+
+  export type PlanScalarFieldEnum = (typeof PlanScalarFieldEnum)[keyof typeof PlanScalarFieldEnum]
+
+
+  export const PromoPlanScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    description: 'description',
+    discountPercent: 'discountPercent',
+    createdAt: 'createdAt',
+    endsAt: 'endsAt',
+    planId: 'planId'
+  };
+
+  export type PromoPlanScalarFieldEnum = (typeof PromoPlanScalarFieldEnum)[keyof typeof PromoPlanScalarFieldEnum]
 
 
   export const ConfigurationScalarFieldEnum: {
@@ -20063,6 +22367,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Enterprise"> | Date | string
     updatedAt?: DateTimeFilter<"Enterprise"> | Date | string
     deletedAt?: DateTimeNullableFilter<"Enterprise"> | Date | string | null
+    planId?: IntFilter<"Enterprise"> | number
     users?: UserListRelationFilter
     categories?: CategoryListRelationFilter
     products?: ProductListRelationFilter
@@ -20070,6 +22375,7 @@ export namespace Prisma {
     orders?: OrderListRelationFilter
     promotions?: PromotionListRelationFilter
     combos?: ComboListRelationFilter
+    plan?: XOR<PlanRelationFilter, PlanWhereInput>
   }
 
   export type EnterpriseOrderByWithRelationInput = {
@@ -20084,6 +22390,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrderInput | SortOrder
+    planId?: SortOrder
     users?: UserOrderByRelationAggregateInput
     categories?: CategoryOrderByRelationAggregateInput
     products?: ProductOrderByRelationAggregateInput
@@ -20091,6 +22398,7 @@ export namespace Prisma {
     orders?: OrderOrderByRelationAggregateInput
     promotions?: PromotionOrderByRelationAggregateInput
     combos?: ComboOrderByRelationAggregateInput
+    plan?: PlanOrderByWithRelationInput
   }
 
   export type EnterpriseWhereUniqueInput = Prisma.AtLeast<{
@@ -20108,6 +22416,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Enterprise"> | Date | string
     updatedAt?: DateTimeFilter<"Enterprise"> | Date | string
     deletedAt?: DateTimeNullableFilter<"Enterprise"> | Date | string | null
+    planId?: IntFilter<"Enterprise"> | number
     users?: UserListRelationFilter
     categories?: CategoryListRelationFilter
     products?: ProductListRelationFilter
@@ -20115,6 +22424,7 @@ export namespace Prisma {
     orders?: OrderListRelationFilter
     promotions?: PromotionListRelationFilter
     combos?: ComboListRelationFilter
+    plan?: XOR<PlanRelationFilter, PlanWhereInput>
   }, "id" | "uuid">
 
   export type EnterpriseOrderByWithAggregationInput = {
@@ -20129,6 +22439,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrderInput | SortOrder
+    planId?: SortOrder
     _count?: EnterpriseCountOrderByAggregateInput
     _avg?: EnterpriseAvgOrderByAggregateInput
     _max?: EnterpriseMaxOrderByAggregateInput
@@ -20151,6 +22462,159 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"Enterprise"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Enterprise"> | Date | string
     deletedAt?: DateTimeNullableWithAggregatesFilter<"Enterprise"> | Date | string | null
+    planId?: IntWithAggregatesFilter<"Enterprise"> | number
+  }
+
+  export type PlanWhereInput = {
+    AND?: PlanWhereInput | PlanWhereInput[]
+    OR?: PlanWhereInput[]
+    NOT?: PlanWhereInput | PlanWhereInput[]
+    id?: IntFilter<"Plan"> | number
+    uuid?: StringFilter<"Plan"> | string
+    name?: StringFilter<"Plan"> | string
+    description?: StringNullableFilter<"Plan"> | string | null
+    price?: FloatFilter<"Plan"> | number
+    isActive?: BoolFilter<"Plan"> | boolean
+    contractPeriod?: IntFilter<"Plan"> | number
+    createdAt?: DateTimeFilter<"Plan"> | Date | string
+    updatedAt?: DateTimeFilter<"Plan"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"Plan"> | Date | string | null
+    promos?: PromoPlanListRelationFilter
+    Enterprise?: EnterpriseListRelationFilter
+  }
+
+  export type PlanOrderByWithRelationInput = {
+    id?: SortOrder
+    uuid?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    price?: SortOrder
+    isActive?: SortOrder
+    contractPeriod?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrderInput | SortOrder
+    promos?: PromoPlanOrderByRelationAggregateInput
+    Enterprise?: EnterpriseOrderByRelationAggregateInput
+  }
+
+  export type PlanWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    uuid?: string
+    AND?: PlanWhereInput | PlanWhereInput[]
+    OR?: PlanWhereInput[]
+    NOT?: PlanWhereInput | PlanWhereInput[]
+    name?: StringFilter<"Plan"> | string
+    description?: StringNullableFilter<"Plan"> | string | null
+    price?: FloatFilter<"Plan"> | number
+    isActive?: BoolFilter<"Plan"> | boolean
+    contractPeriod?: IntFilter<"Plan"> | number
+    createdAt?: DateTimeFilter<"Plan"> | Date | string
+    updatedAt?: DateTimeFilter<"Plan"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"Plan"> | Date | string | null
+    promos?: PromoPlanListRelationFilter
+    Enterprise?: EnterpriseListRelationFilter
+  }, "id" | "uuid">
+
+  export type PlanOrderByWithAggregationInput = {
+    id?: SortOrder
+    uuid?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    price?: SortOrder
+    isActive?: SortOrder
+    contractPeriod?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrderInput | SortOrder
+    _count?: PlanCountOrderByAggregateInput
+    _avg?: PlanAvgOrderByAggregateInput
+    _max?: PlanMaxOrderByAggregateInput
+    _min?: PlanMinOrderByAggregateInput
+    _sum?: PlanSumOrderByAggregateInput
+  }
+
+  export type PlanScalarWhereWithAggregatesInput = {
+    AND?: PlanScalarWhereWithAggregatesInput | PlanScalarWhereWithAggregatesInput[]
+    OR?: PlanScalarWhereWithAggregatesInput[]
+    NOT?: PlanScalarWhereWithAggregatesInput | PlanScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Plan"> | number
+    uuid?: StringWithAggregatesFilter<"Plan"> | string
+    name?: StringWithAggregatesFilter<"Plan"> | string
+    description?: StringNullableWithAggregatesFilter<"Plan"> | string | null
+    price?: FloatWithAggregatesFilter<"Plan"> | number
+    isActive?: BoolWithAggregatesFilter<"Plan"> | boolean
+    contractPeriod?: IntWithAggregatesFilter<"Plan"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"Plan"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Plan"> | Date | string
+    deletedAt?: DateTimeNullableWithAggregatesFilter<"Plan"> | Date | string | null
+  }
+
+  export type PromoPlanWhereInput = {
+    AND?: PromoPlanWhereInput | PromoPlanWhereInput[]
+    OR?: PromoPlanWhereInput[]
+    NOT?: PromoPlanWhereInput | PromoPlanWhereInput[]
+    id?: IntFilter<"PromoPlan"> | number
+    name?: StringFilter<"PromoPlan"> | string
+    description?: StringNullableFilter<"PromoPlan"> | string | null
+    discountPercent?: IntFilter<"PromoPlan"> | number
+    createdAt?: DateTimeFilter<"PromoPlan"> | Date | string
+    endsAt?: DateTimeNullableFilter<"PromoPlan"> | Date | string | null
+    planId?: IntFilter<"PromoPlan"> | number
+    plan?: XOR<PlanRelationFilter, PlanWhereInput>
+  }
+
+  export type PromoPlanOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    discountPercent?: SortOrder
+    createdAt?: SortOrder
+    endsAt?: SortOrderInput | SortOrder
+    planId?: SortOrder
+    plan?: PlanOrderByWithRelationInput
+  }
+
+  export type PromoPlanWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: PromoPlanWhereInput | PromoPlanWhereInput[]
+    OR?: PromoPlanWhereInput[]
+    NOT?: PromoPlanWhereInput | PromoPlanWhereInput[]
+    name?: StringFilter<"PromoPlan"> | string
+    description?: StringNullableFilter<"PromoPlan"> | string | null
+    discountPercent?: IntFilter<"PromoPlan"> | number
+    createdAt?: DateTimeFilter<"PromoPlan"> | Date | string
+    endsAt?: DateTimeNullableFilter<"PromoPlan"> | Date | string | null
+    planId?: IntFilter<"PromoPlan"> | number
+    plan?: XOR<PlanRelationFilter, PlanWhereInput>
+  }, "id">
+
+  export type PromoPlanOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    discountPercent?: SortOrder
+    createdAt?: SortOrder
+    endsAt?: SortOrderInput | SortOrder
+    planId?: SortOrder
+    _count?: PromoPlanCountOrderByAggregateInput
+    _avg?: PromoPlanAvgOrderByAggregateInput
+    _max?: PromoPlanMaxOrderByAggregateInput
+    _min?: PromoPlanMinOrderByAggregateInput
+    _sum?: PromoPlanSumOrderByAggregateInput
+  }
+
+  export type PromoPlanScalarWhereWithAggregatesInput = {
+    AND?: PromoPlanScalarWhereWithAggregatesInput | PromoPlanScalarWhereWithAggregatesInput[]
+    OR?: PromoPlanScalarWhereWithAggregatesInput[]
+    NOT?: PromoPlanScalarWhereWithAggregatesInput | PromoPlanScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"PromoPlan"> | number
+    name?: StringWithAggregatesFilter<"PromoPlan"> | string
+    description?: StringNullableWithAggregatesFilter<"PromoPlan"> | string | null
+    discountPercent?: IntWithAggregatesFilter<"PromoPlan"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"PromoPlan"> | Date | string
+    endsAt?: DateTimeNullableWithAggregatesFilter<"PromoPlan"> | Date | string | null
+    planId?: IntWithAggregatesFilter<"PromoPlan"> | number
   }
 
   export type ConfigurationWhereInput = {
@@ -21290,6 +23754,7 @@ export namespace Prisma {
     orders?: OrderCreateNestedManyWithoutEnterpriseInput
     promotions?: PromotionCreateNestedManyWithoutEnterpriseInput
     combos?: ComboCreateNestedManyWithoutEnterpriseInput
+    plan: PlanCreateNestedOneWithoutEnterpriseInput
   }
 
   export type EnterpriseUncheckedCreateInput = {
@@ -21304,6 +23769,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    planId: number
     users?: UserUncheckedCreateNestedManyWithoutEnterpriseInput
     categories?: CategoryUncheckedCreateNestedManyWithoutEnterpriseInput
     products?: ProductUncheckedCreateNestedManyWithoutEnterpriseInput
@@ -21331,6 +23797,7 @@ export namespace Prisma {
     orders?: OrderUpdateManyWithoutEnterpriseNestedInput
     promotions?: PromotionUpdateManyWithoutEnterpriseNestedInput
     combos?: ComboUpdateManyWithoutEnterpriseNestedInput
+    plan?: PlanUpdateOneRequiredWithoutEnterpriseNestedInput
   }
 
   export type EnterpriseUncheckedUpdateInput = {
@@ -21345,6 +23812,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    planId?: IntFieldUpdateOperationsInput | number
     users?: UserUncheckedUpdateManyWithoutEnterpriseNestedInput
     categories?: CategoryUncheckedUpdateManyWithoutEnterpriseNestedInput
     products?: ProductUncheckedUpdateManyWithoutEnterpriseNestedInput
@@ -21366,6 +23834,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    planId: number
   }
 
   export type EnterpriseUpdateManyMutationInput = {
@@ -21393,6 +23862,169 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    planId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type PlanCreateInput = {
+    uuid: string
+    name: string
+    description?: string | null
+    price: number
+    isActive?: boolean
+    contractPeriod: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    promos?: PromoPlanCreateNestedManyWithoutPlanInput
+    Enterprise?: EnterpriseCreateNestedManyWithoutPlanInput
+  }
+
+  export type PlanUncheckedCreateInput = {
+    id?: number
+    uuid: string
+    name: string
+    description?: string | null
+    price: number
+    isActive?: boolean
+    contractPeriod: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    promos?: PromoPlanUncheckedCreateNestedManyWithoutPlanInput
+    Enterprise?: EnterpriseUncheckedCreateNestedManyWithoutPlanInput
+  }
+
+  export type PlanUpdateInput = {
+    uuid?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    contractPeriod?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    promos?: PromoPlanUpdateManyWithoutPlanNestedInput
+    Enterprise?: EnterpriseUpdateManyWithoutPlanNestedInput
+  }
+
+  export type PlanUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    uuid?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    contractPeriod?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    promos?: PromoPlanUncheckedUpdateManyWithoutPlanNestedInput
+    Enterprise?: EnterpriseUncheckedUpdateManyWithoutPlanNestedInput
+  }
+
+  export type PlanCreateManyInput = {
+    id?: number
+    uuid: string
+    name: string
+    description?: string | null
+    price: number
+    isActive?: boolean
+    contractPeriod: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type PlanUpdateManyMutationInput = {
+    uuid?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    contractPeriod?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type PlanUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    uuid?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    contractPeriod?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type PromoPlanCreateInput = {
+    name: string
+    description?: string | null
+    discountPercent: number
+    createdAt?: Date | string
+    endsAt?: Date | string | null
+    plan: PlanCreateNestedOneWithoutPromosInput
+  }
+
+  export type PromoPlanUncheckedCreateInput = {
+    id?: number
+    name: string
+    description?: string | null
+    discountPercent: number
+    createdAt?: Date | string
+    endsAt?: Date | string | null
+    planId: number
+  }
+
+  export type PromoPlanUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    discountPercent?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    plan?: PlanUpdateOneRequiredWithoutPromosNestedInput
+  }
+
+  export type PromoPlanUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    discountPercent?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    planId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type PromoPlanCreateManyInput = {
+    id?: number
+    name: string
+    description?: string | null
+    discountPercent: number
+    createdAt?: Date | string
+    endsAt?: Date | string | null
+    planId: number
+  }
+
+  export type PromoPlanUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    discountPercent?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type PromoPlanUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    discountPercent?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    planId?: IntFieldUpdateOperationsInput | number
   }
 
   export type ConfigurationCreateInput = {
@@ -22557,6 +25189,11 @@ export namespace Prisma {
     none?: ConfigurationWhereInput
   }
 
+  export type PlanRelationFilter = {
+    is?: PlanWhereInput
+    isNot?: PlanWhereInput
+  }
+
   export type UserOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -22581,10 +25218,12 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
+    planId?: SortOrder
   }
 
   export type EnterpriseAvgOrderByAggregateInput = {
     id?: SortOrder
+    planId?: SortOrder
   }
 
   export type EnterpriseMaxOrderByAggregateInput = {
@@ -22599,6 +25238,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
+    planId?: SortOrder
   }
 
   export type EnterpriseMinOrderByAggregateInput = {
@@ -22613,10 +25253,125 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
+    planId?: SortOrder
   }
 
   export type EnterpriseSumOrderByAggregateInput = {
     id?: SortOrder
+    planId?: SortOrder
+  }
+
+  export type PromoPlanListRelationFilter = {
+    every?: PromoPlanWhereInput
+    some?: PromoPlanWhereInput
+    none?: PromoPlanWhereInput
+  }
+
+  export type EnterpriseListRelationFilter = {
+    every?: EnterpriseWhereInput
+    some?: EnterpriseWhereInput
+    none?: EnterpriseWhereInput
+  }
+
+  export type PromoPlanOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type EnterpriseOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PlanCountOrderByAggregateInput = {
+    id?: SortOrder
+    uuid?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    price?: SortOrder
+    isActive?: SortOrder
+    contractPeriod?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type PlanAvgOrderByAggregateInput = {
+    id?: SortOrder
+    price?: SortOrder
+    contractPeriod?: SortOrder
+  }
+
+  export type PlanMaxOrderByAggregateInput = {
+    id?: SortOrder
+    uuid?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    price?: SortOrder
+    isActive?: SortOrder
+    contractPeriod?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type PlanMinOrderByAggregateInput = {
+    id?: SortOrder
+    uuid?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    price?: SortOrder
+    isActive?: SortOrder
+    contractPeriod?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type PlanSumOrderByAggregateInput = {
+    id?: SortOrder
+    price?: SortOrder
+    contractPeriod?: SortOrder
+  }
+
+  export type PromoPlanCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    discountPercent?: SortOrder
+    createdAt?: SortOrder
+    endsAt?: SortOrder
+    planId?: SortOrder
+  }
+
+  export type PromoPlanAvgOrderByAggregateInput = {
+    id?: SortOrder
+    discountPercent?: SortOrder
+    planId?: SortOrder
+  }
+
+  export type PromoPlanMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    discountPercent?: SortOrder
+    createdAt?: SortOrder
+    endsAt?: SortOrder
+    planId?: SortOrder
+  }
+
+  export type PromoPlanMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    discountPercent?: SortOrder
+    createdAt?: SortOrder
+    endsAt?: SortOrder
+    planId?: SortOrder
+  }
+
+  export type PromoPlanSumOrderByAggregateInput = {
+    id?: SortOrder
+    discountPercent?: SortOrder
+    planId?: SortOrder
   }
 
   export type ConfigurationCountOrderByAggregateInput = {
@@ -23829,6 +26584,12 @@ export namespace Prisma {
     connect?: ComboWhereUniqueInput | ComboWhereUniqueInput[]
   }
 
+  export type PlanCreateNestedOneWithoutEnterpriseInput = {
+    create?: XOR<PlanCreateWithoutEnterpriseInput, PlanUncheckedCreateWithoutEnterpriseInput>
+    connectOrCreate?: PlanCreateOrConnectWithoutEnterpriseInput
+    connect?: PlanWhereUniqueInput
+  }
+
   export type UserUncheckedCreateNestedManyWithoutEnterpriseInput = {
     create?: XOR<UserCreateWithoutEnterpriseInput, UserUncheckedCreateWithoutEnterpriseInput> | UserCreateWithoutEnterpriseInput[] | UserUncheckedCreateWithoutEnterpriseInput[]
     connectOrCreate?: UserCreateOrConnectWithoutEnterpriseInput | UserCreateOrConnectWithoutEnterpriseInput[]
@@ -23976,6 +26737,14 @@ export namespace Prisma {
     deleteMany?: ComboScalarWhereInput | ComboScalarWhereInput[]
   }
 
+  export type PlanUpdateOneRequiredWithoutEnterpriseNestedInput = {
+    create?: XOR<PlanCreateWithoutEnterpriseInput, PlanUncheckedCreateWithoutEnterpriseInput>
+    connectOrCreate?: PlanCreateOrConnectWithoutEnterpriseInput
+    upsert?: PlanUpsertWithoutEnterpriseInput
+    connect?: PlanWhereUniqueInput
+    update?: XOR<XOR<PlanUpdateToOneWithWhereWithoutEnterpriseInput, PlanUpdateWithoutEnterpriseInput>, PlanUncheckedUpdateWithoutEnterpriseInput>
+  }
+
   export type UserUncheckedUpdateManyWithoutEnterpriseNestedInput = {
     create?: XOR<UserCreateWithoutEnterpriseInput, UserUncheckedCreateWithoutEnterpriseInput> | UserCreateWithoutEnterpriseInput[] | UserUncheckedCreateWithoutEnterpriseInput[]
     connectOrCreate?: UserCreateOrConnectWithoutEnterpriseInput | UserCreateOrConnectWithoutEnterpriseInput[]
@@ -24072,6 +26841,104 @@ export namespace Prisma {
     update?: ComboUpdateWithWhereUniqueWithoutEnterpriseInput | ComboUpdateWithWhereUniqueWithoutEnterpriseInput[]
     updateMany?: ComboUpdateManyWithWhereWithoutEnterpriseInput | ComboUpdateManyWithWhereWithoutEnterpriseInput[]
     deleteMany?: ComboScalarWhereInput | ComboScalarWhereInput[]
+  }
+
+  export type PromoPlanCreateNestedManyWithoutPlanInput = {
+    create?: XOR<PromoPlanCreateWithoutPlanInput, PromoPlanUncheckedCreateWithoutPlanInput> | PromoPlanCreateWithoutPlanInput[] | PromoPlanUncheckedCreateWithoutPlanInput[]
+    connectOrCreate?: PromoPlanCreateOrConnectWithoutPlanInput | PromoPlanCreateOrConnectWithoutPlanInput[]
+    createMany?: PromoPlanCreateManyPlanInputEnvelope
+    connect?: PromoPlanWhereUniqueInput | PromoPlanWhereUniqueInput[]
+  }
+
+  export type EnterpriseCreateNestedManyWithoutPlanInput = {
+    create?: XOR<EnterpriseCreateWithoutPlanInput, EnterpriseUncheckedCreateWithoutPlanInput> | EnterpriseCreateWithoutPlanInput[] | EnterpriseUncheckedCreateWithoutPlanInput[]
+    connectOrCreate?: EnterpriseCreateOrConnectWithoutPlanInput | EnterpriseCreateOrConnectWithoutPlanInput[]
+    createMany?: EnterpriseCreateManyPlanInputEnvelope
+    connect?: EnterpriseWhereUniqueInput | EnterpriseWhereUniqueInput[]
+  }
+
+  export type PromoPlanUncheckedCreateNestedManyWithoutPlanInput = {
+    create?: XOR<PromoPlanCreateWithoutPlanInput, PromoPlanUncheckedCreateWithoutPlanInput> | PromoPlanCreateWithoutPlanInput[] | PromoPlanUncheckedCreateWithoutPlanInput[]
+    connectOrCreate?: PromoPlanCreateOrConnectWithoutPlanInput | PromoPlanCreateOrConnectWithoutPlanInput[]
+    createMany?: PromoPlanCreateManyPlanInputEnvelope
+    connect?: PromoPlanWhereUniqueInput | PromoPlanWhereUniqueInput[]
+  }
+
+  export type EnterpriseUncheckedCreateNestedManyWithoutPlanInput = {
+    create?: XOR<EnterpriseCreateWithoutPlanInput, EnterpriseUncheckedCreateWithoutPlanInput> | EnterpriseCreateWithoutPlanInput[] | EnterpriseUncheckedCreateWithoutPlanInput[]
+    connectOrCreate?: EnterpriseCreateOrConnectWithoutPlanInput | EnterpriseCreateOrConnectWithoutPlanInput[]
+    createMany?: EnterpriseCreateManyPlanInputEnvelope
+    connect?: EnterpriseWhereUniqueInput | EnterpriseWhereUniqueInput[]
+  }
+
+  export type PromoPlanUpdateManyWithoutPlanNestedInput = {
+    create?: XOR<PromoPlanCreateWithoutPlanInput, PromoPlanUncheckedCreateWithoutPlanInput> | PromoPlanCreateWithoutPlanInput[] | PromoPlanUncheckedCreateWithoutPlanInput[]
+    connectOrCreate?: PromoPlanCreateOrConnectWithoutPlanInput | PromoPlanCreateOrConnectWithoutPlanInput[]
+    upsert?: PromoPlanUpsertWithWhereUniqueWithoutPlanInput | PromoPlanUpsertWithWhereUniqueWithoutPlanInput[]
+    createMany?: PromoPlanCreateManyPlanInputEnvelope
+    set?: PromoPlanWhereUniqueInput | PromoPlanWhereUniqueInput[]
+    disconnect?: PromoPlanWhereUniqueInput | PromoPlanWhereUniqueInput[]
+    delete?: PromoPlanWhereUniqueInput | PromoPlanWhereUniqueInput[]
+    connect?: PromoPlanWhereUniqueInput | PromoPlanWhereUniqueInput[]
+    update?: PromoPlanUpdateWithWhereUniqueWithoutPlanInput | PromoPlanUpdateWithWhereUniqueWithoutPlanInput[]
+    updateMany?: PromoPlanUpdateManyWithWhereWithoutPlanInput | PromoPlanUpdateManyWithWhereWithoutPlanInput[]
+    deleteMany?: PromoPlanScalarWhereInput | PromoPlanScalarWhereInput[]
+  }
+
+  export type EnterpriseUpdateManyWithoutPlanNestedInput = {
+    create?: XOR<EnterpriseCreateWithoutPlanInput, EnterpriseUncheckedCreateWithoutPlanInput> | EnterpriseCreateWithoutPlanInput[] | EnterpriseUncheckedCreateWithoutPlanInput[]
+    connectOrCreate?: EnterpriseCreateOrConnectWithoutPlanInput | EnterpriseCreateOrConnectWithoutPlanInput[]
+    upsert?: EnterpriseUpsertWithWhereUniqueWithoutPlanInput | EnterpriseUpsertWithWhereUniqueWithoutPlanInput[]
+    createMany?: EnterpriseCreateManyPlanInputEnvelope
+    set?: EnterpriseWhereUniqueInput | EnterpriseWhereUniqueInput[]
+    disconnect?: EnterpriseWhereUniqueInput | EnterpriseWhereUniqueInput[]
+    delete?: EnterpriseWhereUniqueInput | EnterpriseWhereUniqueInput[]
+    connect?: EnterpriseWhereUniqueInput | EnterpriseWhereUniqueInput[]
+    update?: EnterpriseUpdateWithWhereUniqueWithoutPlanInput | EnterpriseUpdateWithWhereUniqueWithoutPlanInput[]
+    updateMany?: EnterpriseUpdateManyWithWhereWithoutPlanInput | EnterpriseUpdateManyWithWhereWithoutPlanInput[]
+    deleteMany?: EnterpriseScalarWhereInput | EnterpriseScalarWhereInput[]
+  }
+
+  export type PromoPlanUncheckedUpdateManyWithoutPlanNestedInput = {
+    create?: XOR<PromoPlanCreateWithoutPlanInput, PromoPlanUncheckedCreateWithoutPlanInput> | PromoPlanCreateWithoutPlanInput[] | PromoPlanUncheckedCreateWithoutPlanInput[]
+    connectOrCreate?: PromoPlanCreateOrConnectWithoutPlanInput | PromoPlanCreateOrConnectWithoutPlanInput[]
+    upsert?: PromoPlanUpsertWithWhereUniqueWithoutPlanInput | PromoPlanUpsertWithWhereUniqueWithoutPlanInput[]
+    createMany?: PromoPlanCreateManyPlanInputEnvelope
+    set?: PromoPlanWhereUniqueInput | PromoPlanWhereUniqueInput[]
+    disconnect?: PromoPlanWhereUniqueInput | PromoPlanWhereUniqueInput[]
+    delete?: PromoPlanWhereUniqueInput | PromoPlanWhereUniqueInput[]
+    connect?: PromoPlanWhereUniqueInput | PromoPlanWhereUniqueInput[]
+    update?: PromoPlanUpdateWithWhereUniqueWithoutPlanInput | PromoPlanUpdateWithWhereUniqueWithoutPlanInput[]
+    updateMany?: PromoPlanUpdateManyWithWhereWithoutPlanInput | PromoPlanUpdateManyWithWhereWithoutPlanInput[]
+    deleteMany?: PromoPlanScalarWhereInput | PromoPlanScalarWhereInput[]
+  }
+
+  export type EnterpriseUncheckedUpdateManyWithoutPlanNestedInput = {
+    create?: XOR<EnterpriseCreateWithoutPlanInput, EnterpriseUncheckedCreateWithoutPlanInput> | EnterpriseCreateWithoutPlanInput[] | EnterpriseUncheckedCreateWithoutPlanInput[]
+    connectOrCreate?: EnterpriseCreateOrConnectWithoutPlanInput | EnterpriseCreateOrConnectWithoutPlanInput[]
+    upsert?: EnterpriseUpsertWithWhereUniqueWithoutPlanInput | EnterpriseUpsertWithWhereUniqueWithoutPlanInput[]
+    createMany?: EnterpriseCreateManyPlanInputEnvelope
+    set?: EnterpriseWhereUniqueInput | EnterpriseWhereUniqueInput[]
+    disconnect?: EnterpriseWhereUniqueInput | EnterpriseWhereUniqueInput[]
+    delete?: EnterpriseWhereUniqueInput | EnterpriseWhereUniqueInput[]
+    connect?: EnterpriseWhereUniqueInput | EnterpriseWhereUniqueInput[]
+    update?: EnterpriseUpdateWithWhereUniqueWithoutPlanInput | EnterpriseUpdateWithWhereUniqueWithoutPlanInput[]
+    updateMany?: EnterpriseUpdateManyWithWhereWithoutPlanInput | EnterpriseUpdateManyWithWhereWithoutPlanInput[]
+    deleteMany?: EnterpriseScalarWhereInput | EnterpriseScalarWhereInput[]
+  }
+
+  export type PlanCreateNestedOneWithoutPromosInput = {
+    create?: XOR<PlanCreateWithoutPromosInput, PlanUncheckedCreateWithoutPromosInput>
+    connectOrCreate?: PlanCreateOrConnectWithoutPromosInput
+    connect?: PlanWhereUniqueInput
+  }
+
+  export type PlanUpdateOneRequiredWithoutPromosNestedInput = {
+    create?: XOR<PlanCreateWithoutPromosInput, PlanUncheckedCreateWithoutPromosInput>
+    connectOrCreate?: PlanCreateOrConnectWithoutPromosInput
+    upsert?: PlanUpsertWithoutPromosInput
+    connect?: PlanWhereUniqueInput
+    update?: XOR<XOR<PlanUpdateToOneWithWhereWithoutPromosInput, PlanUpdateWithoutPromosInput>, PlanUncheckedUpdateWithoutPromosInput>
   }
 
   export type EnterpriseCreateNestedOneWithoutConfigurationsInput = {
@@ -24727,6 +27594,7 @@ export namespace Prisma {
     orders?: OrderCreateNestedManyWithoutEnterpriseInput
     promotions?: PromotionCreateNestedManyWithoutEnterpriseInput
     combos?: ComboCreateNestedManyWithoutEnterpriseInput
+    plan: PlanCreateNestedOneWithoutEnterpriseInput
   }
 
   export type EnterpriseUncheckedCreateWithoutUsersInput = {
@@ -24741,6 +27609,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    planId: number
     categories?: CategoryUncheckedCreateNestedManyWithoutEnterpriseInput
     products?: ProductUncheckedCreateNestedManyWithoutEnterpriseInput
     configurations?: ConfigurationUncheckedCreateNestedManyWithoutEnterpriseInput
@@ -24812,6 +27681,7 @@ export namespace Prisma {
     orders?: OrderUpdateManyWithoutEnterpriseNestedInput
     promotions?: PromotionUpdateManyWithoutEnterpriseNestedInput
     combos?: ComboUpdateManyWithoutEnterpriseNestedInput
+    plan?: PlanUpdateOneRequiredWithoutEnterpriseNestedInput
   }
 
   export type EnterpriseUncheckedUpdateWithoutUsersInput = {
@@ -24826,6 +27696,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    planId?: IntFieldUpdateOperationsInput | number
     categories?: CategoryUncheckedUpdateManyWithoutEnterpriseNestedInput
     products?: ProductUncheckedUpdateManyWithoutEnterpriseNestedInput
     configurations?: ConfigurationUncheckedUpdateManyWithoutEnterpriseNestedInput
@@ -24910,6 +27781,7 @@ export namespace Prisma {
     orders?: OrderCreateNestedManyWithoutEnterpriseInput
     promotions?: PromotionCreateNestedManyWithoutEnterpriseInput
     combos?: ComboCreateNestedManyWithoutEnterpriseInput
+    plan: PlanCreateNestedOneWithoutEnterpriseInput
   }
 
   export type EnterpriseUncheckedCreateWithoutCategoriesInput = {
@@ -24924,6 +27796,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    planId: number
     users?: UserUncheckedCreateNestedManyWithoutEnterpriseInput
     products?: ProductUncheckedCreateNestedManyWithoutEnterpriseInput
     configurations?: ConfigurationUncheckedCreateNestedManyWithoutEnterpriseInput
@@ -25074,6 +27947,7 @@ export namespace Prisma {
     orders?: OrderUpdateManyWithoutEnterpriseNestedInput
     promotions?: PromotionUpdateManyWithoutEnterpriseNestedInput
     combos?: ComboUpdateManyWithoutEnterpriseNestedInput
+    plan?: PlanUpdateOneRequiredWithoutEnterpriseNestedInput
   }
 
   export type EnterpriseUncheckedUpdateWithoutCategoriesInput = {
@@ -25088,6 +27962,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    planId?: IntFieldUpdateOperationsInput | number
     users?: UserUncheckedUpdateManyWithoutEnterpriseNestedInput
     products?: ProductUncheckedUpdateManyWithoutEnterpriseNestedInput
     configurations?: ConfigurationUncheckedUpdateManyWithoutEnterpriseNestedInput
@@ -25203,6 +28078,7 @@ export namespace Prisma {
     orders?: OrderCreateNestedManyWithoutEnterpriseInput
     promotions?: PromotionCreateNestedManyWithoutEnterpriseInput
     combos?: ComboCreateNestedManyWithoutEnterpriseInput
+    plan: PlanCreateNestedOneWithoutEnterpriseInput
   }
 
   export type EnterpriseUncheckedCreateWithoutProductsInput = {
@@ -25217,6 +28093,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    planId: number
     users?: UserUncheckedCreateNestedManyWithoutEnterpriseInput
     categories?: CategoryUncheckedCreateNestedManyWithoutEnterpriseInput
     configurations?: ConfigurationUncheckedCreateNestedManyWithoutEnterpriseInput
@@ -25490,6 +28367,7 @@ export namespace Prisma {
     orders?: OrderUpdateManyWithoutEnterpriseNestedInput
     promotions?: PromotionUpdateManyWithoutEnterpriseNestedInput
     combos?: ComboUpdateManyWithoutEnterpriseNestedInput
+    plan?: PlanUpdateOneRequiredWithoutEnterpriseNestedInput
   }
 
   export type EnterpriseUncheckedUpdateWithoutProductsInput = {
@@ -25504,6 +28382,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    planId?: IntFieldUpdateOperationsInput | number
     users?: UserUncheckedUpdateManyWithoutEnterpriseNestedInput
     categories?: CategoryUncheckedUpdateManyWithoutEnterpriseNestedInput
     configurations?: ConfigurationUncheckedUpdateManyWithoutEnterpriseNestedInput
@@ -26027,6 +28906,7 @@ export namespace Prisma {
     configurations?: ConfigurationCreateNestedManyWithoutEnterpriseInput
     promotions?: PromotionCreateNestedManyWithoutEnterpriseInput
     combos?: ComboCreateNestedManyWithoutEnterpriseInput
+    plan: PlanCreateNestedOneWithoutEnterpriseInput
   }
 
   export type EnterpriseUncheckedCreateWithoutOrdersInput = {
@@ -26041,6 +28921,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    planId: number
     users?: UserUncheckedCreateNestedManyWithoutEnterpriseInput
     categories?: CategoryUncheckedCreateNestedManyWithoutEnterpriseInput
     products?: ProductUncheckedCreateNestedManyWithoutEnterpriseInput
@@ -26192,6 +29073,7 @@ export namespace Prisma {
     configurations?: ConfigurationUpdateManyWithoutEnterpriseNestedInput
     promotions?: PromotionUpdateManyWithoutEnterpriseNestedInput
     combos?: ComboUpdateManyWithoutEnterpriseNestedInput
+    plan?: PlanUpdateOneRequiredWithoutEnterpriseNestedInput
   }
 
   export type EnterpriseUncheckedUpdateWithoutOrdersInput = {
@@ -26206,6 +29088,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    planId?: IntFieldUpdateOperationsInput | number
     users?: UserUncheckedUpdateManyWithoutEnterpriseNestedInput
     categories?: CategoryUncheckedUpdateManyWithoutEnterpriseNestedInput
     products?: ProductUncheckedUpdateManyWithoutEnterpriseNestedInput
@@ -26773,6 +29656,38 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type PlanCreateWithoutEnterpriseInput = {
+    uuid: string
+    name: string
+    description?: string | null
+    price: number
+    isActive?: boolean
+    contractPeriod: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    promos?: PromoPlanCreateNestedManyWithoutPlanInput
+  }
+
+  export type PlanUncheckedCreateWithoutEnterpriseInput = {
+    id?: number
+    uuid: string
+    name: string
+    description?: string | null
+    price: number
+    isActive?: boolean
+    contractPeriod: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    promos?: PromoPlanUncheckedCreateNestedManyWithoutPlanInput
+  }
+
+  export type PlanCreateOrConnectWithoutEnterpriseInput = {
+    where: PlanWhereUniqueInput
+    create: XOR<PlanCreateWithoutEnterpriseInput, PlanUncheckedCreateWithoutEnterpriseInput>
+  }
+
   export type UserUpsertWithWhereUniqueWithoutEnterpriseInput = {
     where: UserWhereUniqueInput
     update: XOR<UserUpdateWithoutEnterpriseInput, UserUncheckedUpdateWithoutEnterpriseInput>
@@ -26931,6 +29846,255 @@ export namespace Prisma {
     data: XOR<ComboUpdateManyMutationInput, ComboUncheckedUpdateManyWithoutEnterpriseInput>
   }
 
+  export type PlanUpsertWithoutEnterpriseInput = {
+    update: XOR<PlanUpdateWithoutEnterpriseInput, PlanUncheckedUpdateWithoutEnterpriseInput>
+    create: XOR<PlanCreateWithoutEnterpriseInput, PlanUncheckedCreateWithoutEnterpriseInput>
+    where?: PlanWhereInput
+  }
+
+  export type PlanUpdateToOneWithWhereWithoutEnterpriseInput = {
+    where?: PlanWhereInput
+    data: XOR<PlanUpdateWithoutEnterpriseInput, PlanUncheckedUpdateWithoutEnterpriseInput>
+  }
+
+  export type PlanUpdateWithoutEnterpriseInput = {
+    uuid?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    contractPeriod?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    promos?: PromoPlanUpdateManyWithoutPlanNestedInput
+  }
+
+  export type PlanUncheckedUpdateWithoutEnterpriseInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    uuid?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    contractPeriod?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    promos?: PromoPlanUncheckedUpdateManyWithoutPlanNestedInput
+  }
+
+  export type PromoPlanCreateWithoutPlanInput = {
+    name: string
+    description?: string | null
+    discountPercent: number
+    createdAt?: Date | string
+    endsAt?: Date | string | null
+  }
+
+  export type PromoPlanUncheckedCreateWithoutPlanInput = {
+    id?: number
+    name: string
+    description?: string | null
+    discountPercent: number
+    createdAt?: Date | string
+    endsAt?: Date | string | null
+  }
+
+  export type PromoPlanCreateOrConnectWithoutPlanInput = {
+    where: PromoPlanWhereUniqueInput
+    create: XOR<PromoPlanCreateWithoutPlanInput, PromoPlanUncheckedCreateWithoutPlanInput>
+  }
+
+  export type PromoPlanCreateManyPlanInputEnvelope = {
+    data: PromoPlanCreateManyPlanInput | PromoPlanCreateManyPlanInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type EnterpriseCreateWithoutPlanInput = {
+    uuid: string
+    name: string
+    responsiblePerson?: string | null
+    phoneNumber?: string | null
+    email?: string | null
+    description?: string | null
+    status: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    users?: UserCreateNestedManyWithoutEnterpriseInput
+    categories?: CategoryCreateNestedManyWithoutEnterpriseInput
+    products?: ProductCreateNestedManyWithoutEnterpriseInput
+    configurations?: ConfigurationCreateNestedManyWithoutEnterpriseInput
+    orders?: OrderCreateNestedManyWithoutEnterpriseInput
+    promotions?: PromotionCreateNestedManyWithoutEnterpriseInput
+    combos?: ComboCreateNestedManyWithoutEnterpriseInput
+  }
+
+  export type EnterpriseUncheckedCreateWithoutPlanInput = {
+    id?: number
+    uuid: string
+    name: string
+    responsiblePerson?: string | null
+    phoneNumber?: string | null
+    email?: string | null
+    description?: string | null
+    status: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    users?: UserUncheckedCreateNestedManyWithoutEnterpriseInput
+    categories?: CategoryUncheckedCreateNestedManyWithoutEnterpriseInput
+    products?: ProductUncheckedCreateNestedManyWithoutEnterpriseInput
+    configurations?: ConfigurationUncheckedCreateNestedManyWithoutEnterpriseInput
+    orders?: OrderUncheckedCreateNestedManyWithoutEnterpriseInput
+    promotions?: PromotionUncheckedCreateNestedManyWithoutEnterpriseInput
+    combos?: ComboUncheckedCreateNestedManyWithoutEnterpriseInput
+  }
+
+  export type EnterpriseCreateOrConnectWithoutPlanInput = {
+    where: EnterpriseWhereUniqueInput
+    create: XOR<EnterpriseCreateWithoutPlanInput, EnterpriseUncheckedCreateWithoutPlanInput>
+  }
+
+  export type EnterpriseCreateManyPlanInputEnvelope = {
+    data: EnterpriseCreateManyPlanInput | EnterpriseCreateManyPlanInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PromoPlanUpsertWithWhereUniqueWithoutPlanInput = {
+    where: PromoPlanWhereUniqueInput
+    update: XOR<PromoPlanUpdateWithoutPlanInput, PromoPlanUncheckedUpdateWithoutPlanInput>
+    create: XOR<PromoPlanCreateWithoutPlanInput, PromoPlanUncheckedCreateWithoutPlanInput>
+  }
+
+  export type PromoPlanUpdateWithWhereUniqueWithoutPlanInput = {
+    where: PromoPlanWhereUniqueInput
+    data: XOR<PromoPlanUpdateWithoutPlanInput, PromoPlanUncheckedUpdateWithoutPlanInput>
+  }
+
+  export type PromoPlanUpdateManyWithWhereWithoutPlanInput = {
+    where: PromoPlanScalarWhereInput
+    data: XOR<PromoPlanUpdateManyMutationInput, PromoPlanUncheckedUpdateManyWithoutPlanInput>
+  }
+
+  export type PromoPlanScalarWhereInput = {
+    AND?: PromoPlanScalarWhereInput | PromoPlanScalarWhereInput[]
+    OR?: PromoPlanScalarWhereInput[]
+    NOT?: PromoPlanScalarWhereInput | PromoPlanScalarWhereInput[]
+    id?: IntFilter<"PromoPlan"> | number
+    name?: StringFilter<"PromoPlan"> | string
+    description?: StringNullableFilter<"PromoPlan"> | string | null
+    discountPercent?: IntFilter<"PromoPlan"> | number
+    createdAt?: DateTimeFilter<"PromoPlan"> | Date | string
+    endsAt?: DateTimeNullableFilter<"PromoPlan"> | Date | string | null
+    planId?: IntFilter<"PromoPlan"> | number
+  }
+
+  export type EnterpriseUpsertWithWhereUniqueWithoutPlanInput = {
+    where: EnterpriseWhereUniqueInput
+    update: XOR<EnterpriseUpdateWithoutPlanInput, EnterpriseUncheckedUpdateWithoutPlanInput>
+    create: XOR<EnterpriseCreateWithoutPlanInput, EnterpriseUncheckedCreateWithoutPlanInput>
+  }
+
+  export type EnterpriseUpdateWithWhereUniqueWithoutPlanInput = {
+    where: EnterpriseWhereUniqueInput
+    data: XOR<EnterpriseUpdateWithoutPlanInput, EnterpriseUncheckedUpdateWithoutPlanInput>
+  }
+
+  export type EnterpriseUpdateManyWithWhereWithoutPlanInput = {
+    where: EnterpriseScalarWhereInput
+    data: XOR<EnterpriseUpdateManyMutationInput, EnterpriseUncheckedUpdateManyWithoutPlanInput>
+  }
+
+  export type EnterpriseScalarWhereInput = {
+    AND?: EnterpriseScalarWhereInput | EnterpriseScalarWhereInput[]
+    OR?: EnterpriseScalarWhereInput[]
+    NOT?: EnterpriseScalarWhereInput | EnterpriseScalarWhereInput[]
+    id?: IntFilter<"Enterprise"> | number
+    uuid?: StringFilter<"Enterprise"> | string
+    name?: StringFilter<"Enterprise"> | string
+    responsiblePerson?: StringNullableFilter<"Enterprise"> | string | null
+    phoneNumber?: StringNullableFilter<"Enterprise"> | string | null
+    email?: StringNullableFilter<"Enterprise"> | string | null
+    description?: StringNullableFilter<"Enterprise"> | string | null
+    status?: StringFilter<"Enterprise"> | string
+    createdAt?: DateTimeFilter<"Enterprise"> | Date | string
+    updatedAt?: DateTimeFilter<"Enterprise"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"Enterprise"> | Date | string | null
+    planId?: IntFilter<"Enterprise"> | number
+  }
+
+  export type PlanCreateWithoutPromosInput = {
+    uuid: string
+    name: string
+    description?: string | null
+    price: number
+    isActive?: boolean
+    contractPeriod: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    Enterprise?: EnterpriseCreateNestedManyWithoutPlanInput
+  }
+
+  export type PlanUncheckedCreateWithoutPromosInput = {
+    id?: number
+    uuid: string
+    name: string
+    description?: string | null
+    price: number
+    isActive?: boolean
+    contractPeriod: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+    Enterprise?: EnterpriseUncheckedCreateNestedManyWithoutPlanInput
+  }
+
+  export type PlanCreateOrConnectWithoutPromosInput = {
+    where: PlanWhereUniqueInput
+    create: XOR<PlanCreateWithoutPromosInput, PlanUncheckedCreateWithoutPromosInput>
+  }
+
+  export type PlanUpsertWithoutPromosInput = {
+    update: XOR<PlanUpdateWithoutPromosInput, PlanUncheckedUpdateWithoutPromosInput>
+    create: XOR<PlanCreateWithoutPromosInput, PlanUncheckedCreateWithoutPromosInput>
+    where?: PlanWhereInput
+  }
+
+  export type PlanUpdateToOneWithWhereWithoutPromosInput = {
+    where?: PlanWhereInput
+    data: XOR<PlanUpdateWithoutPromosInput, PlanUncheckedUpdateWithoutPromosInput>
+  }
+
+  export type PlanUpdateWithoutPromosInput = {
+    uuid?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    contractPeriod?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Enterprise?: EnterpriseUpdateManyWithoutPlanNestedInput
+  }
+
+  export type PlanUncheckedUpdateWithoutPromosInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    uuid?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    contractPeriod?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Enterprise?: EnterpriseUncheckedUpdateManyWithoutPlanNestedInput
+  }
+
   export type EnterpriseCreateWithoutConfigurationsInput = {
     uuid: string
     name: string
@@ -26948,6 +30112,7 @@ export namespace Prisma {
     orders?: OrderCreateNestedManyWithoutEnterpriseInput
     promotions?: PromotionCreateNestedManyWithoutEnterpriseInput
     combos?: ComboCreateNestedManyWithoutEnterpriseInput
+    plan: PlanCreateNestedOneWithoutEnterpriseInput
   }
 
   export type EnterpriseUncheckedCreateWithoutConfigurationsInput = {
@@ -26962,6 +30127,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    planId: number
     users?: UserUncheckedCreateNestedManyWithoutEnterpriseInput
     categories?: CategoryUncheckedCreateNestedManyWithoutEnterpriseInput
     products?: ProductUncheckedCreateNestedManyWithoutEnterpriseInput
@@ -27003,6 +30169,7 @@ export namespace Prisma {
     orders?: OrderUpdateManyWithoutEnterpriseNestedInput
     promotions?: PromotionUpdateManyWithoutEnterpriseNestedInput
     combos?: ComboUpdateManyWithoutEnterpriseNestedInput
+    plan?: PlanUpdateOneRequiredWithoutEnterpriseNestedInput
   }
 
   export type EnterpriseUncheckedUpdateWithoutConfigurationsInput = {
@@ -27017,6 +30184,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    planId?: IntFieldUpdateOperationsInput | number
     users?: UserUncheckedUpdateManyWithoutEnterpriseNestedInput
     categories?: CategoryUncheckedUpdateManyWithoutEnterpriseNestedInput
     products?: ProductUncheckedUpdateManyWithoutEnterpriseNestedInput
@@ -27468,6 +30636,7 @@ export namespace Prisma {
     configurations?: ConfigurationCreateNestedManyWithoutEnterpriseInput
     orders?: OrderCreateNestedManyWithoutEnterpriseInput
     combos?: ComboCreateNestedManyWithoutEnterpriseInput
+    plan: PlanCreateNestedOneWithoutEnterpriseInput
   }
 
   export type EnterpriseUncheckedCreateWithoutPromotionsInput = {
@@ -27482,6 +30651,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    planId: number
     users?: UserUncheckedCreateNestedManyWithoutEnterpriseInput
     categories?: CategoryUncheckedCreateNestedManyWithoutEnterpriseInput
     products?: ProductUncheckedCreateNestedManyWithoutEnterpriseInput
@@ -27576,6 +30746,7 @@ export namespace Prisma {
     configurations?: ConfigurationUpdateManyWithoutEnterpriseNestedInput
     orders?: OrderUpdateManyWithoutEnterpriseNestedInput
     combos?: ComboUpdateManyWithoutEnterpriseNestedInput
+    plan?: PlanUpdateOneRequiredWithoutEnterpriseNestedInput
   }
 
   export type EnterpriseUncheckedUpdateWithoutPromotionsInput = {
@@ -27590,6 +30761,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    planId?: IntFieldUpdateOperationsInput | number
     users?: UserUncheckedUpdateManyWithoutEnterpriseNestedInput
     categories?: CategoryUncheckedUpdateManyWithoutEnterpriseNestedInput
     products?: ProductUncheckedUpdateManyWithoutEnterpriseNestedInput
@@ -27657,6 +30829,7 @@ export namespace Prisma {
     configurations?: ConfigurationCreateNestedManyWithoutEnterpriseInput
     orders?: OrderCreateNestedManyWithoutEnterpriseInput
     promotions?: PromotionCreateNestedManyWithoutEnterpriseInput
+    plan: PlanCreateNestedOneWithoutEnterpriseInput
   }
 
   export type EnterpriseUncheckedCreateWithoutCombosInput = {
@@ -27671,6 +30844,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
+    planId: number
     users?: UserUncheckedCreateNestedManyWithoutEnterpriseInput
     categories?: CategoryUncheckedCreateNestedManyWithoutEnterpriseInput
     products?: ProductUncheckedCreateNestedManyWithoutEnterpriseInput
@@ -27873,6 +31047,7 @@ export namespace Prisma {
     configurations?: ConfigurationUpdateManyWithoutEnterpriseNestedInput
     orders?: OrderUpdateManyWithoutEnterpriseNestedInput
     promotions?: PromotionUpdateManyWithoutEnterpriseNestedInput
+    plan?: PlanUpdateOneRequiredWithoutEnterpriseNestedInput
   }
 
   export type EnterpriseUncheckedUpdateWithoutCombosInput = {
@@ -27887,6 +31062,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    planId?: IntFieldUpdateOperationsInput | number
     users?: UserUncheckedUpdateManyWithoutEnterpriseNestedInput
     categories?: CategoryUncheckedUpdateManyWithoutEnterpriseNestedInput
     products?: ProductUncheckedUpdateManyWithoutEnterpriseNestedInput
@@ -29128,6 +32304,110 @@ export namespace Prisma {
     productId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
+  export type PromoPlanCreateManyPlanInput = {
+    id?: number
+    name: string
+    description?: string | null
+    discountPercent: number
+    createdAt?: Date | string
+    endsAt?: Date | string | null
+  }
+
+  export type EnterpriseCreateManyPlanInput = {
+    id?: number
+    uuid: string
+    name: string
+    responsiblePerson?: string | null
+    phoneNumber?: string | null
+    email?: string | null
+    description?: string | null
+    status: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
+  }
+
+  export type PromoPlanUpdateWithoutPlanInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    discountPercent?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type PromoPlanUncheckedUpdateWithoutPlanInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    discountPercent?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type PromoPlanUncheckedUpdateManyWithoutPlanInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    discountPercent?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    endsAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type EnterpriseUpdateWithoutPlanInput = {
+    uuid?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    responsiblePerson?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    users?: UserUpdateManyWithoutEnterpriseNestedInput
+    categories?: CategoryUpdateManyWithoutEnterpriseNestedInput
+    products?: ProductUpdateManyWithoutEnterpriseNestedInput
+    configurations?: ConfigurationUpdateManyWithoutEnterpriseNestedInput
+    orders?: OrderUpdateManyWithoutEnterpriseNestedInput
+    promotions?: PromotionUpdateManyWithoutEnterpriseNestedInput
+    combos?: ComboUpdateManyWithoutEnterpriseNestedInput
+  }
+
+  export type EnterpriseUncheckedUpdateWithoutPlanInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    uuid?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    responsiblePerson?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    users?: UserUncheckedUpdateManyWithoutEnterpriseNestedInput
+    categories?: CategoryUncheckedUpdateManyWithoutEnterpriseNestedInput
+    products?: ProductUncheckedUpdateManyWithoutEnterpriseNestedInput
+    configurations?: ConfigurationUncheckedUpdateManyWithoutEnterpriseNestedInput
+    orders?: OrderUncheckedUpdateManyWithoutEnterpriseNestedInput
+    promotions?: PromotionUncheckedUpdateManyWithoutEnterpriseNestedInput
+    combos?: ComboUncheckedUpdateManyWithoutEnterpriseNestedInput
+  }
+
+  export type EnterpriseUncheckedUpdateManyWithoutPlanInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    uuid?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    responsiblePerson?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
   export type ProductTagCreateManyTagInput = {
     id?: number
     uuid: string
@@ -29313,6 +32593,10 @@ export namespace Prisma {
      */
     export type EnterpriseCountOutputTypeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = EnterpriseCountOutputTypeDefaultArgs<ExtArgs>
     /**
+     * @deprecated Use PlanCountOutputTypeDefaultArgs instead
+     */
+    export type PlanCountOutputTypeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = PlanCountOutputTypeDefaultArgs<ExtArgs>
+    /**
      * @deprecated Use TagCountOutputTypeDefaultArgs instead
      */
     export type TagCountOutputTypeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = TagCountOutputTypeDefaultArgs<ExtArgs>
@@ -29360,6 +32644,14 @@ export namespace Prisma {
      * @deprecated Use EnterpriseDefaultArgs instead
      */
     export type EnterpriseArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = EnterpriseDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use PlanDefaultArgs instead
+     */
+    export type PlanArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = PlanDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use PromoPlanDefaultArgs instead
+     */
+    export type PromoPlanArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = PromoPlanDefaultArgs<ExtArgs>
     /**
      * @deprecated Use ConfigurationDefaultArgs instead
      */
