@@ -13,19 +13,21 @@ export class UpdateCategoryUseCase {
 
   async execute(
     categoryId: number,
-    updatedCategoryData: Category
+    updatedCategory: Category
   ): Promise<Category | null> {
     try {
+      updatedCategory.status = updatedCategory.status || undefined;
+
       const result = await this.categoryRepository.update(
         categoryId,
-        updatedCategoryData
+        updatedCategory
       );
 
       if (!result) {
         return null;
       }
 
-      return updatedCategoryData;
+      return updatedCategory;
     } catch (error) {
       throw new Error('Erro ao atualizar categoria');
     }

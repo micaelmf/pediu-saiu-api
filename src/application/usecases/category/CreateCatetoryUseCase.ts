@@ -19,8 +19,6 @@ export class CreateCategoryUseCase {
         status: category.status || undefined,
       };
 
-      console.log('categoryData', categoryData);
-
       const createdCategory = await this.categoryRepository.create(
         categoryData
       );
