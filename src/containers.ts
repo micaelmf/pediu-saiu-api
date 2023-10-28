@@ -9,6 +9,12 @@ import { EnterpriseController } from './adapters/http/controllers/EnterpriseCont
 import { BrevoEmailService } from './domain/services/BrevoEmailService';
 import { LoginUseCase } from './application/usecases/auth/LoginUseCase';
 import { ListEnterprisesUseCase } from './application/usecases/enterprise/ListEnterprisesUseCase';
+import { CategoryController } from './adapters/http/controllers/CategoryController';
+import { ListCategoriesUseCase } from './application/usecases/category/ListCategoriesUseCase';
+import { CreateCategoryUseCase } from './application/usecases/category/CreateCatetoryUseCase';
+import { GetCategoryByIdUseCase } from './application/usecases/category/GetCategoryByIdUseCase';
+import { CategoryRepository } from './adapters/database/mysql/repositories/CategoryRepository';
+import { UpdateCategoryUseCase } from './application/usecases/category/UpdateCategoryUseCase';
 
 container.register<UserRepository>('UserRepository', {
   useClass: UserRepository,
@@ -40,6 +46,30 @@ container.register<ListEnterprisesUseCase>('ListEnterprisesUseCase', {
 
 container.register<EnterpriseController>('EnterpriseController', {
   useClass: EnterpriseController,
+});
+
+container.register<CategoryController>('CategoryController', {
+  useClass: CategoryController,
+});
+
+container.register<CreateCategoryUseCase>('CreateCategoryUseCase', {
+  useClass: CreateCategoryUseCase,
+});
+
+container.register<ListCategoriesUseCase>('ListCategoriesUseCase', {
+  useClass: ListCategoriesUseCase,
+});
+
+container.register<GetCategoryByIdUseCase>('GetCategoryByIdUseCase', {
+  useClass: GetCategoryByIdUseCase,
+});
+
+container.register<UpdateCategoryUseCase>('UpdateCategoryUseCase', {
+  useClass: UpdateCategoryUseCase,
+});
+
+container.register<CategoryRepository>('CategoryRepository', {
+  useClass: CategoryRepository,
 });
 
 container.register<BrevoEmailService>('BrevoEmailService', {

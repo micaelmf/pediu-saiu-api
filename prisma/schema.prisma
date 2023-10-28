@@ -21,7 +21,7 @@ model User {
     lastName     String?
     createdAt    DateTime    @default(now())
     updatedAt    DateTime    @updatedAt
-    deletedAt    DateTime?   @updatedAt
+    deletedAt    DateTime?
     orders       Order[]
     enterprise   Enterprise? @relation(fields: [enterpriseId], references: [id])
     enterpriseId Int
@@ -32,7 +32,10 @@ model Category {
     uuid         String      @unique
     name         String
     description  String?
-    status       String      @default("active") // Pode ser 'ativo', 'inativo', 'removido' etc.
+    status       String      @default("visible") // Pode ser 'visível', 'invisível', 'removido' etc.
+    createdAt    DateTime    @default(now())
+    updatedAt    DateTime    @updatedAt
+    deletedAt    DateTime?
     products     Product[]
     enterprise   Enterprise  @relation(fields: [enterpriseId], references: [id])
     enterpriseId Int
@@ -48,7 +51,7 @@ model Product {
     type              String          @default("product") // Por exemplo, 'produto', 'adicional', 'acompanhamento' etc.
     price             Float
     free              Boolean         @default(false)
-    status            String          @default("active") // Pode ser 'ativo', 'inativo', 'removido' etc.
+    status            String          @default("visible") // Pode ser 'visível', 'invisível', 'removido' etc.
     additionalsMax    Int             @default(0)
     accompanimentsMax Int             @default(0)
     createdAt         DateTime        @default(now())
@@ -152,7 +155,7 @@ model Plan {
     contractPeriod Int // Período de contrato em meses
     createdAt      DateTime     @default(now())
     updatedAt      DateTime     @updatedAt
-    deletedAt      DateTime?    @updatedAt
+    deletedAt      DateTime?
     promos         PromoPlan[] // Um plano pode ter muitas promoções
     Enterprise     Enterprise[]
 }

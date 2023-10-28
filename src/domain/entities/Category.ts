@@ -1,15 +1,12 @@
-// src/domain/entities/Enterprise.ts
-export class Enterprise {
+// src/domain/entities/Category.ts
+export class Category {
   constructor(
     public id: number,
     public uuid: string,
     public name: string,
-    public responsiblePerson: string | null,
-    public phoneNumber: string | null,
-    public email: string | null,
     public description: string | null,
     public status: string,
-    public planId: number,
+    public enterpriseId: number,
     public createdAt: Date,
     public updatedAt: Date,
     public deletedAt: Date | null

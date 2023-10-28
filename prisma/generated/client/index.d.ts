@@ -3886,6 +3886,9 @@ export namespace Prisma {
     name: string | null
     description: string | null
     status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    deletedAt: Date | null
     enterpriseId: number | null
   }
 
@@ -3895,6 +3898,9 @@ export namespace Prisma {
     name: string | null
     description: string | null
     status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    deletedAt: Date | null
     enterpriseId: number | null
   }
 
@@ -3904,6 +3910,9 @@ export namespace Prisma {
     name: number
     description: number
     status: number
+    createdAt: number
+    updatedAt: number
+    deletedAt: number
     enterpriseId: number
     _all: number
   }
@@ -3925,6 +3934,9 @@ export namespace Prisma {
     name?: true
     description?: true
     status?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
     enterpriseId?: true
   }
 
@@ -3934,6 +3946,9 @@ export namespace Prisma {
     name?: true
     description?: true
     status?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
     enterpriseId?: true
   }
 
@@ -3943,6 +3958,9 @@ export namespace Prisma {
     name?: true
     description?: true
     status?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
     enterpriseId?: true
     _all?: true
   }
@@ -4039,6 +4057,9 @@ export namespace Prisma {
     name: string
     description: string | null
     status: string
+    createdAt: Date
+    updatedAt: Date
+    deletedAt: Date | null
     enterpriseId: number
     _count: CategoryCountAggregateOutputType | null
     _avg: CategoryAvgAggregateOutputType | null
@@ -4067,6 +4088,9 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
     enterpriseId?: boolean
     products?: boolean | Category$productsArgs<ExtArgs>
     enterprise?: boolean | EnterpriseDefaultArgs<ExtArgs>
@@ -4081,6 +4105,9 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
     enterpriseId?: boolean
   }
 
@@ -4107,6 +4134,9 @@ export namespace Prisma {
       name: string
       description: string | null
       status: string
+      createdAt: Date
+      updatedAt: Date
+      deletedAt: Date | null
       enterpriseId: number
     }, ExtArgs["result"]["category"]>
     composites: {}
@@ -4514,6 +4544,9 @@ export namespace Prisma {
     readonly name: FieldRef<"Category", 'String'>
     readonly description: FieldRef<"Category", 'String'>
     readonly status: FieldRef<"Category", 'String'>
+    readonly createdAt: FieldRef<"Category", 'DateTime'>
+    readonly updatedAt: FieldRef<"Category", 'DateTime'>
+    readonly deletedAt: FieldRef<"Category", 'DateTime'>
     readonly enterpriseId: FieldRef<"Category", 'Int'>
   }
     
@@ -21457,6 +21490,9 @@ export namespace Prisma {
     name: 'name',
     description: 'description',
     status: 'status',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    deletedAt: 'deletedAt',
     enterpriseId: 'enterpriseId'
   };
 
@@ -21851,6 +21887,9 @@ export namespace Prisma {
     name?: StringFilter<"Category"> | string
     description?: StringNullableFilter<"Category"> | string | null
     status?: StringFilter<"Category"> | string
+    createdAt?: DateTimeFilter<"Category"> | Date | string
+    updatedAt?: DateTimeFilter<"Category"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"Category"> | Date | string | null
     enterpriseId?: IntFilter<"Category"> | number
     products?: ProductListRelationFilter
     enterprise?: XOR<EnterpriseRelationFilter, EnterpriseWhereInput>
@@ -21864,6 +21903,9 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrderInput | SortOrder
     status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrderInput | SortOrder
     enterpriseId?: SortOrder
     products?: ProductOrderByRelationAggregateInput
     enterprise?: EnterpriseOrderByWithRelationInput
@@ -21880,6 +21922,9 @@ export namespace Prisma {
     name?: StringFilter<"Category"> | string
     description?: StringNullableFilter<"Category"> | string | null
     status?: StringFilter<"Category"> | string
+    createdAt?: DateTimeFilter<"Category"> | Date | string
+    updatedAt?: DateTimeFilter<"Category"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"Category"> | Date | string | null
     enterpriseId?: IntFilter<"Category"> | number
     products?: ProductListRelationFilter
     enterprise?: XOR<EnterpriseRelationFilter, EnterpriseWhereInput>
@@ -21893,6 +21938,9 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrderInput | SortOrder
     status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrderInput | SortOrder
     enterpriseId?: SortOrder
     _count?: CategoryCountOrderByAggregateInput
     _avg?: CategoryAvgOrderByAggregateInput
@@ -21910,6 +21958,9 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"Category"> | string
     description?: StringNullableWithAggregatesFilter<"Category"> | string | null
     status?: StringWithAggregatesFilter<"Category"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Category"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Category"> | Date | string
+    deletedAt?: DateTimeNullableWithAggregatesFilter<"Category"> | Date | string | null
     enterpriseId?: IntWithAggregatesFilter<"Category"> | number
   }
 
@@ -23240,6 +23291,9 @@ export namespace Prisma {
     name: string
     description?: string | null
     status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
     products?: ProductCreateNestedManyWithoutCategoryInput
     enterprise: EnterpriseCreateNestedOneWithoutCategoriesInput
     promotions?: PromotionCreateNestedManyWithoutCategoryInput
@@ -23252,6 +23306,9 @@ export namespace Prisma {
     name: string
     description?: string | null
     status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
     enterpriseId: number
     products?: ProductUncheckedCreateNestedManyWithoutCategoryInput
     promotions?: PromotionUncheckedCreateNestedManyWithoutCategoryInput
@@ -23263,6 +23320,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     products?: ProductUpdateManyWithoutCategoryNestedInput
     enterprise?: EnterpriseUpdateOneRequiredWithoutCategoriesNestedInput
     promotions?: PromotionUpdateManyWithoutCategoryNestedInput
@@ -23275,6 +23335,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     enterpriseId?: IntFieldUpdateOperationsInput | number
     products?: ProductUncheckedUpdateManyWithoutCategoryNestedInput
     promotions?: PromotionUncheckedUpdateManyWithoutCategoryNestedInput
@@ -23287,6 +23350,9 @@ export namespace Prisma {
     name: string
     description?: string | null
     status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
     enterpriseId: number
   }
 
@@ -23295,6 +23361,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type CategoryUncheckedUpdateManyInput = {
@@ -23303,6 +23372,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     enterpriseId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -24765,6 +24837,9 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
     enterpriseId?: SortOrder
   }
 
@@ -24779,6 +24854,9 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
     enterpriseId?: SortOrder
   }
 
@@ -24788,6 +24866,9 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
     enterpriseId?: SortOrder
   }
 
@@ -28040,6 +28121,9 @@ export namespace Prisma {
     name: string
     description?: string | null
     status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
     enterprise: EnterpriseCreateNestedOneWithoutCategoriesInput
     promotions?: PromotionCreateNestedManyWithoutCategoryInput
     combos?: ComboCreateNestedManyWithoutCategoryInput
@@ -28051,6 +28135,9 @@ export namespace Prisma {
     name: string
     description?: string | null
     status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
     enterpriseId: number
     promotions?: PromotionUncheckedCreateNestedManyWithoutCategoryInput
     combos?: ComboUncheckedCreateNestedManyWithoutCategoryInput
@@ -28323,6 +28410,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     enterprise?: EnterpriseUpdateOneRequiredWithoutCategoriesNestedInput
     promotions?: PromotionUpdateManyWithoutCategoryNestedInput
     combos?: ComboUpdateManyWithoutCategoryNestedInput
@@ -28334,6 +28424,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     enterpriseId?: IntFieldUpdateOperationsInput | number
     promotions?: PromotionUncheckedUpdateManyWithoutCategoryNestedInput
     combos?: ComboUncheckedUpdateManyWithoutCategoryNestedInput
@@ -29435,6 +29528,9 @@ export namespace Prisma {
     name: string
     description?: string | null
     status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
     products?: ProductCreateNestedManyWithoutCategoryInput
     promotions?: PromotionCreateNestedManyWithoutCategoryInput
     combos?: ComboCreateNestedManyWithoutCategoryInput
@@ -29446,6 +29542,9 @@ export namespace Prisma {
     name: string
     description?: string | null
     status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
     products?: ProductUncheckedCreateNestedManyWithoutCategoryInput
     promotions?: PromotionUncheckedCreateNestedManyWithoutCategoryInput
     combos?: ComboUncheckedCreateNestedManyWithoutCategoryInput
@@ -29749,6 +29848,9 @@ export namespace Prisma {
     name?: StringFilter<"Category"> | string
     description?: StringNullableFilter<"Category"> | string | null
     status?: StringFilter<"Category"> | string
+    createdAt?: DateTimeFilter<"Category"> | Date | string
+    updatedAt?: DateTimeFilter<"Category"> | Date | string
+    deletedAt?: DateTimeNullableFilter<"Category"> | Date | string | null
     enterpriseId?: IntFilter<"Category"> | number
   }
 
@@ -30598,6 +30700,9 @@ export namespace Prisma {
     name: string
     description?: string | null
     status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
     products?: ProductCreateNestedManyWithoutCategoryInput
     enterprise: EnterpriseCreateNestedOneWithoutCategoriesInput
     combos?: ComboCreateNestedManyWithoutCategoryInput
@@ -30609,6 +30714,9 @@ export namespace Prisma {
     name: string
     description?: string | null
     status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
     enterpriseId: number
     products?: ProductUncheckedCreateNestedManyWithoutCategoryInput
     combos?: ComboUncheckedCreateNestedManyWithoutCategoryInput
@@ -30702,6 +30810,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     products?: ProductUpdateManyWithoutCategoryNestedInput
     enterprise?: EnterpriseUpdateOneRequiredWithoutCategoriesNestedInput
     combos?: ComboUpdateManyWithoutCategoryNestedInput
@@ -30713,6 +30824,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     enterpriseId?: IntFieldUpdateOperationsInput | number
     products?: ProductUncheckedUpdateManyWithoutCategoryNestedInput
     combos?: ComboUncheckedUpdateManyWithoutCategoryNestedInput
@@ -30791,6 +30905,9 @@ export namespace Prisma {
     name: string
     description?: string | null
     status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
     products?: ProductCreateNestedManyWithoutCategoryInput
     enterprise: EnterpriseCreateNestedOneWithoutCategoriesInput
     promotions?: PromotionCreateNestedManyWithoutCategoryInput
@@ -30802,6 +30919,9 @@ export namespace Prisma {
     name: string
     description?: string | null
     status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
     enterpriseId: number
     products?: ProductUncheckedCreateNestedManyWithoutCategoryInput
     promotions?: PromotionUncheckedCreateNestedManyWithoutCategoryInput
@@ -31003,6 +31123,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     products?: ProductUpdateManyWithoutCategoryNestedInput
     enterprise?: EnterpriseUpdateOneRequiredWithoutCategoriesNestedInput
     promotions?: PromotionUpdateManyWithoutCategoryNestedInput
@@ -31014,6 +31137,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     enterpriseId?: IntFieldUpdateOperationsInput | number
     products?: ProductUncheckedUpdateManyWithoutCategoryNestedInput
     promotions?: PromotionUncheckedUpdateManyWithoutCategoryNestedInput
@@ -31957,6 +32083,9 @@ export namespace Prisma {
     name: string
     description?: string | null
     status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deletedAt?: Date | string | null
   }
 
   export type ProductCreateManyEnterpriseInput = {
@@ -32074,6 +32203,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     products?: ProductUpdateManyWithoutCategoryNestedInput
     promotions?: PromotionUpdateManyWithoutCategoryNestedInput
     combos?: ComboUpdateManyWithoutCategoryNestedInput
@@ -32085,6 +32217,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     products?: ProductUncheckedUpdateManyWithoutCategoryNestedInput
     promotions?: PromotionUncheckedUpdateManyWithoutCategoryNestedInput
     combos?: ComboUncheckedUpdateManyWithoutCategoryNestedInput
@@ -32096,6 +32231,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ProductUpdateWithoutEnterpriseInput = {

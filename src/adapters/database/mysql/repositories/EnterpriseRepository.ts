@@ -21,6 +21,7 @@ export class EnterpriseRepository implements EnterpriseRepositoryInterface {
           email: enterprise.email,
           description: enterprise.description,
           status: enterprise.status,
+          planId: enterprise.planId
         },
       });
 
