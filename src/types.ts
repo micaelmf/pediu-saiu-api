@@ -2,7 +2,7 @@
 import { Request, Response, NextFunction } from 'express';
 
 interface CustomRequest extends Request {
-  user?: any;
+  payload?: any;
 }
 
 type CustomRequestHandler = (

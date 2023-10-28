@@ -18,7 +18,6 @@ export class CreateEnterpriseUseCase {
 
       return createdEnterprise;
     } catch (error) {
-      // Aqui você pode tratar o erro de acordo com suas necessidades
       throw error; // Propague o erro para quem chamou o caso de uso
     }
   }

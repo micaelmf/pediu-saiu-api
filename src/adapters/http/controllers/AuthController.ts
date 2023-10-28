@@ -29,7 +29,7 @@ export class AuthController {
         .cookie('jwtToken', token, {
           httpOnly: true,
           // secure: true, // para produção
-          maxAge: 60000 * 60 // 1h
+          maxAge: 60000 * 60 * 12// 12h
         })
         .status(200)
         .json({ message: "Login realizado com sucesso!", token: token});

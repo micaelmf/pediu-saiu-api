@@ -49,19 +49,24 @@ class AuthService {
   public generateToken(user: User): string {
     // TODO: lembrar de colocar a data do vencimento da empresa relacionada ao usuário e criar uma tabela no banco para conter somente as informações de cobrança
     const payload = {
-      user: { uuid: user.uuid, email: user.email, role: user.role },
+      user: {
+        uuid: user.uuid,
+        email: user.email,
+        role: user.role,
+        enterprise: { id: user.id },
+      },
     };
 
-    return jwt.sign({ payload }, this.secretKey, { expiresIn: '1h' });
+    return jwt.sign({ payload }, this.secretKey, { expiresIn: '12h' });
   }
 
-  public async verifyToken(token: string): Promise<any | null> {
+  public async decodeToken(token: string): Promise<any | null> {
     return new Promise((resolve, reject) => {
       jwt.verify(token, this.secretKey, (err: any, decoded: any) => {
         if (err) {
           resolve(null);
         } else {
-          resolve(decoded);
+          resolve(decoded.payload);
         }
       });
     });

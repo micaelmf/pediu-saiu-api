@@ -6,6 +6,7 @@ import { GetCategoryByIdUseCase } from '../../../application/usecases/category/G
 import { UpdateCategoryUseCase } from '../../../application/usecases/category/UpdateCategoryUseCase';
 import { inject, injectable } from 'tsyringe';
 import { Category } from '../../../domain/entities/Category';
+import { CustomRequest } from '../../../types';
 
 @injectable()
 export class CategoryController {
@@ -20,9 +21,13 @@ export class CategoryController {
     private updateCategoryUseCase: UpdateCategoryUseCase
   ) {}
 
-  async createCategory(req: Request, res: Response): Promise<void> {
+  async createCategory(req: CustomRequest, res: Response): Promise<void> {
     try {
-      const categoryData: Category = req.body;
+      let categoryData: Category = {
+        ...req.body,
+        enterpriseId: req.payload.user.enterprise.id,
+      };
+
       const createdCategory = await this.createCategoryUseCase.execute(
         categoryData
       );

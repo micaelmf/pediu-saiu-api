@@ -1,5 +1,5 @@
 // src/adapters/database/mysql/repositories/CategoryRepository.ts
-import { ulid } from 'ulid';
+
 import { PrismaClient } from '../../../../../prisma/generated/client';
 import { Category } from '../../../../domain/entities/Category';
 import { CategoryRepositoryInterface } from '../../../../domain/repositories/CategoryRepositoryInterface';

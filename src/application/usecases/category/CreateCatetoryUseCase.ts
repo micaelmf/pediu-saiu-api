@@ -2,6 +2,7 @@
 import { CategoryRepositoryInterface } from '../../../domain/repositories/CategoryRepositoryInterface';
 import { Category } from '../../../domain/entities/Category';
 import { inject, injectable } from 'tsyringe';
+import { ulid } from 'ulid';
 
 @injectable()
 export class CreateCategoryUseCase {
@@ -12,19 +13,20 @@ export class CreateCategoryUseCase {
 
   async execute(category: Category): Promise<Category> {
     try {
-      
       const categoryData: Category = {
         ...category,
-        status: category.status || 'visible'
-      }
+        uuid: ulid(),
+        status: category.status || undefined,
+      };
+
+      console.log('categoryData', categoryData);
 
       const createdCategory = await this.categoryRepository.create(
-        category
+        categoryData
       );
 
       return createdCategory;
     } catch (error) {
-      // Aqui você pode tratar o erro de acordo com suas necessidades
       throw error; // Propague o erro para quem chamou o caso de uso
     }
   }

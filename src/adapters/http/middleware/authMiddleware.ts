@@ -27,12 +27,12 @@ export const verifyToken: CustomRequestHandler = async (
 
   try {
     const authService = new AuthService(process.env.JWT_SECRET || '');
-    const decoded = await authService.verifyToken(token);
+    const decoded = await authService.decodeToken(token);
 
     if (!decoded) {
       res.status(401).json({ error: 'Invalid token' });
     } else {
-      req.user = decoded;
+      req.payload = decoded;
       next();
     }
   } catch (error) {
