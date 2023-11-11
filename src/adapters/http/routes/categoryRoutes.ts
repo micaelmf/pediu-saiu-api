@@ -28,4 +28,8 @@ router.put('/:id', verifyToken, async (req: CustomRequest, res) => {
   await categoryController.updateCategory(req, res);
 });
 
+router.patch('/:id', verifyToken, async (req: CustomRequest, res) => {
+  await categoryController.updateVisibility(req, res);
+});
+
 export default router;

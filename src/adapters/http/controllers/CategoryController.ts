@@ -4,6 +4,7 @@ import { CreateCategoryUseCase } from '../../../application/usecases/category/Cr
 import { ListCategoriesUseCase } from '../../../application/usecases/category/ListCategoriesUseCase';
 import { GetCategoryByIdUseCase } from '../../../application/usecases/category/GetCategoryByIdUseCase';
 import { UpdateCategoryUseCase } from '../../../application/usecases/category/UpdateCategoryUseCase';
+import { UpdateCategoryVisibilityUseCase } from '../../../application/usecases/category/UpdateCategoryVisibilityUseCase';
 import { inject, injectable } from 'tsyringe';
 import { Category } from '../../../domain/entities/Category';
 import { CustomRequest } from '../../../types';
@@ -18,7 +19,9 @@ export class CategoryController {
     @inject('GetCategoryByIdUseCase')
     private getCategoryByIdUseCase: GetCategoryByIdUseCase,
     @inject('UpdateCategoryUseCase')
-    private updateCategoryUseCase: UpdateCategoryUseCase
+    private updateCategoryUseCase: UpdateCategoryUseCase,
+    @inject('UpdateCategoryVisibilityUseCase')
+    private updateCategoryVisibilityUseCase: UpdateCategoryVisibilityUseCase
   ) {}
 
   async createCategory(req: CustomRequest, res: Response): Promise<void> {
@@ -72,6 +75,19 @@ export class CategoryController {
         categoryId,
         updatedData
       );
+
+      res.status(200).json(updatedCategory);
+    } catch (error) {
+      res.status(500).json({ error: 'Erro ao atualizar categoria' });
+    }
+  }
+
+  async updateVisibility(req: Request, res: Response): Promise<void> {
+    try {
+      const categoryId: number = parseInt(req.params.id);
+      const { status } = req.body;
+      const updatedCategory =
+        await this.updateCategoryVisibilityUseCase.execute(categoryId, status);
 
       res.status(200).json(updatedCategory);
     } catch (error) {

@@ -45,8 +45,15 @@ export class CategoryRepository implements CategoryRepositoryInterface {
 
   async findAll(): Promise<Category[]> {
     try {
-      const categorys = await this.prisma.category.findMany();
-      return categorys;
+      const categories = await this.prisma.category.findMany({
+        where: {
+          status: {
+            not: 'deleted',
+          },
+        },
+      });
+      
+      return categories;
     } catch (error) {
       throw new Error('Erro ao buscar todos os produtos.');
     }
@@ -70,6 +77,23 @@ export class CategoryRepository implements CategoryRepositoryInterface {
       return updatedCategory;
     } catch (error) {
       throw new Error('Erro ao atualizar categoria no banco de dados.');
+    }
+  }
+
+  async updateStatus(id: number, status: string): Promise<boolean> {
+    try {
+      await this.prisma.category.update({
+        where: {
+          id,
+        },
+        data: {
+          status,
+        },
+      });
+
+      return true;
+    } catch (error) {
+      throw new Error(`Erro ao atualizar o status da categoria com ID: ${id}`);
     }
   }
 
