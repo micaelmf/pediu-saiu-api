@@ -16,6 +16,7 @@ import { GetCategoryByIdUseCase } from './application/usecases/category/GetCateg
 import { CategoryRepository } from './adapters/database/mysql/repositories/CategoryRepository';
 import { UpdateCategoryUseCase } from './application/usecases/category/UpdateCategoryUseCase';
 import { UpdateCategoryVisibilityUseCase } from './application/usecases/category/UpdateCategoryVisibilityUseCase';
+import { SearchCategoriesUseCase } from './application/usecases/category/SearchCategoriesUseCase';
 
 container.register<UserRepository>('UserRepository', {
   useClass: UserRepository,
@@ -59,6 +60,10 @@ container.register<CreateCategoryUseCase>('CreateCategoryUseCase', {
 
 container.register<ListCategoriesUseCase>('ListCategoriesUseCase', {
   useClass: ListCategoriesUseCase,
+});
+
+container.register<SearchCategoriesUseCase>('SearchCategoriesUseCase', {
+  useClass: SearchCategoriesUseCase,
 });
 
 container.register<GetCategoryByIdUseCase>('GetCategoryByIdUseCase', {

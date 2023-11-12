@@ -2,6 +2,7 @@
 import { Request, Response } from 'express';
 import { CreateCategoryUseCase } from '../../../application/usecases/category/CreateCatetoryUseCase';
 import { ListCategoriesUseCase } from '../../../application/usecases/category/ListCategoriesUseCase';
+import { SearchCategoriesUseCase } from '../../../application/usecases/category/SearchCategoriesUseCase';
 import { GetCategoryByIdUseCase } from '../../../application/usecases/category/GetCategoryByIdUseCase';
 import { UpdateCategoryUseCase } from '../../../application/usecases/category/UpdateCategoryUseCase';
 import { UpdateCategoryVisibilityUseCase } from '../../../application/usecases/category/UpdateCategoryVisibilityUseCase';
@@ -16,6 +17,8 @@ export class CategoryController {
     private createCategoryUseCase: CreateCategoryUseCase,
     @inject('ListCategoriesUseCase')
     private listCategoriesUseCase: ListCategoriesUseCase,
+    @inject('SearchCategoriesUseCase')
+    private searchCategoriesUseCase: SearchCategoriesUseCase,
     @inject('GetCategoryByIdUseCase')
     private getCategoryByIdUseCase: GetCategoryByIdUseCase,
     @inject('UpdateCategoryUseCase')
@@ -48,6 +51,17 @@ export class CategoryController {
       res.status(200).json(Categories);
     } catch (error) {
       res.status(500).json({ error: 'Erro ao listar empresas' });
+    }
+  }
+
+  async searchCategories(req: CustomRequest, res: Response): Promise<void> {
+    try {
+      const filters: Record<string, any> = req.query;
+      const categories: Category[] = await this.searchCategoriesUseCase.execute(filters);
+  
+      res.status(200).json(categories);
+    } catch (error) {
+      res.status(500).json({ error: 'Internal Server Error' });
     }
   }
 

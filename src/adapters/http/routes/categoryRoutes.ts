@@ -20,6 +20,10 @@ router.get('/', verifyToken, async (req: CustomRequest, res) => {
   await categoryController.listCategories(req, res);
 });
 
+router.get('/search', verifyToken, async (req: CustomRequest, res) => {
+  await categoryController.searchCategories(req, res);
+});
+
 router.get('/:id', verifyToken, async (req: CustomRequest, res) => {
   await categoryController.getCategoryById(req, res);
 });

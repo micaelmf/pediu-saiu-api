@@ -52,10 +52,24 @@ export class CategoryRepository implements CategoryRepositoryInterface {
           },
         },
       });
-      
+
       return categories;
     } catch (error) {
       throw new Error('Erro ao buscar todos os produtos.');
+    }
+  }
+
+  async findByFilters(filters: Record<string, any>): Promise<Category[]> {
+    try {
+      const categories = await this.prisma.category.findMany({
+        where: {
+          name: filters?.name || undefined,
+          status: filters?.status || undefined,
+        },
+      });
+      return categories;
+    } catch (error) {
+      throw new Error('Erro ao buscar categorias por nome.');
     }
   }
 
