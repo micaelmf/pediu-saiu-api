@@ -9,6 +9,7 @@ import userRoutes from '../adapters/http/routes/userRoutes';
 import authRoutes from '../adapters/http/routes/authRoutes';
 import enterpriseRoutes from '../adapters/http/routes/enterpriseRoutes';
 import categoryRoutes from '../adapters/http/routes/categoryRoutes';
+import productRoutes from '../adapters/http/routes/productRoutes';
 
 dotenv.config();
 const app = express();
@@ -47,6 +48,8 @@ app.use('/users', userRoutes);
 app.use('/enterprises', enterpriseRoutes);
 
 app.use('/categories', categoryRoutes);
+
+app.use('/products', productRoutes);
 
 app.listen(port, () => {
   console.log(`Servidor está rodando na porta ${port}`);

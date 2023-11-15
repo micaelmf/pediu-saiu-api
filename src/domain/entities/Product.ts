@@ -8,7 +8,7 @@ export class Product {
     public type: string,
     public price: number,
     public free: boolean,
-    public status: string,
+    public status: string | undefined,
     public additionalsMax: number,
     public accompanimentsMax: number,
     public categoryId: number,

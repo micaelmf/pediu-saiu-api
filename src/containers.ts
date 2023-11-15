@@ -17,7 +17,14 @@ import { CategoryRepository } from './adapters/database/mysql/repositories/Categ
 import { UpdateCategoryUseCase } from './application/usecases/category/UpdateCategoryUseCase';
 import { UpdateCategoryVisibilityUseCase } from './application/usecases/category/UpdateCategoryVisibilityUseCase';
 import { SearchCategoriesUseCase } from './application/usecases/category/SearchCategoriesUseCase';
+import { ProductController } from './adapters/http/controllers/ProductController';
+import { CreateProductUseCase } from './application/usecases/product/CreateProductUseCase';
+import { ProductRepository } from './adapters/database/mysql/repositories/ProductRepository';
 
+
+/**
+ * User
+ */
 container.register<UserRepository>('UserRepository', {
   useClass: UserRepository,
 });
@@ -34,6 +41,9 @@ container.register<UserController>('UserController', {
   useClass: UserController,
 });
 
+/**
+ * Enterprise
+ */
 container.register<EnterpriseRepository>('EnterpriseRepository', {
   useClass: EnterpriseRepository,
 });
@@ -50,6 +60,9 @@ container.register<EnterpriseController>('EnterpriseController', {
   useClass: EnterpriseController,
 });
 
+/**
+ * Category
+ */
 container.register<CategoryController>('CategoryController', {
   useClass: CategoryController,
 });
@@ -81,6 +94,46 @@ container.register<UpdateCategoryVisibilityUseCase>('UpdateCategoryVisibilityUse
 container.register<CategoryRepository>('CategoryRepository', {
   useClass: CategoryRepository,
 });
+
+/**
+ * Product
+ */
+container.register<ProductController>('ProductController', {
+  useClass: ProductController,
+});
+
+container.register<ProductRepository>('ProductRepository', {
+  useClass: ProductRepository,
+});
+
+container.register<CreateProductUseCase>('CreateProductUseCase', {
+  useClass: CreateProductUseCase,
+});
+
+// container.register<ListCategoriesUseCase>('ListCategoriesUseCase', {
+//   useClass: ListCategoriesUseCase,
+// });
+
+// container.register<SearchCategoriesUseCase>('SearchCategoriesUseCase', {
+//   useClass: SearchCategoriesUseCase,
+// });
+
+// container.register<GetProductByIdUseCase>('GetProductByIdUseCase', {
+//   useClass: GetProductByIdUseCase,
+// });
+
+// container.register<UpdateProductUseCase>('UpdateProductUseCase', {
+//   useClass: UpdateProductUseCase,
+// });
+
+// container.register<UpdateProductVisibilityUseCase>('UpdateProductVisibilityUseCase', {
+//   useClass: UpdateProductVisibilityUseCase,
+// });
+
+
+/**
+ * Others
+ */
 
 container.register<BrevoEmailService>('BrevoEmailService', {
   useClass: BrevoEmailService,
