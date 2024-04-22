@@ -3,6 +3,7 @@ import { createEnterpriseSeed } from '../src/domain/entities/seeds/EnterpriseSee
 import { createUserSeed } from '../src/domain/entities/seeds/UserSeed';
 import { createPlanSeed } from '../src/domain/entities/seeds/PlanSeed';
 import { createCategorySeed } from '../src/domain/entities/seeds/CategorySeed';
+import { createProductSeed } from '../src/domain/entities/seeds/ProductSeed';
 
 const prisma = new PrismaClient();
 
@@ -11,6 +12,7 @@ async function main() {
   const enterprises = createEnterpriseSeed(10);
   const users = createUserSeed(enterprises.length * 3, enterprises.length);
   const categories = createCategorySeed();
+  const products = createProductSeed(20, enterprises.length, categories.length);
 
   // Insira os registros no banco de dados
   await prisma.$transaction([

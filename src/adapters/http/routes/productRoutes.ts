@@ -16,9 +16,9 @@ router.post('/', verifyToken, async (req, res) => {
   await productController.createProduct(req, res);
 });
 
-// router.get('/', verifyToken, async (req: CustomRequest, res) => {
-//   await productController.listProducts(req, res);
-// });
+router.get('/', verifyToken, async (req: CustomRequest, res) => {
+  await productController.listProducts(req, res);
+});
 
 // router.get('/search', verifyToken, async (req: CustomRequest, res) => {
 //   await productController.searchProducts(req, res);

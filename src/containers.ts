@@ -20,6 +20,7 @@ import { SearchCategoriesUseCase } from './application/usecases/category/SearchC
 import { ProductController } from './adapters/http/controllers/ProductController';
 import { CreateProductUseCase } from './application/usecases/product/CreateProductUseCase';
 import { ProductRepository } from './adapters/database/mysql/repositories/ProductRepository';
+import { ListProductsUseCase } from './application/usecases/product/ListProductsUseCase';
 
 
 /**
@@ -110,12 +111,12 @@ container.register<CreateProductUseCase>('CreateProductUseCase', {
   useClass: CreateProductUseCase,
 });
 
-// container.register<ListCategoriesUseCase>('ListCategoriesUseCase', {
-//   useClass: ListCategoriesUseCase,
-// });
+container.register<ListProductsUseCase>('ListProductsUseCase', {
+  useClass: ListProductsUseCase,
+});
 
-// container.register<SearchCategoriesUseCase>('SearchCategoriesUseCase', {
-//   useClass: SearchCategoriesUseCase,
+// container.register<SearchProductsUseCase>('SearchProductsUseCase', {
+//   useClass: SearchProductsUseCase,
 // });
 
 // container.register<GetProductByIdUseCase>('GetProductByIdUseCase', {

@@ -1,7 +1,7 @@
 // src/adapters/http/controllers/ProductController.ts
 import { Request, Response } from 'express';
 import { CreateProductUseCase } from '../../../application/usecases/product/CreateProductUseCase';
-// import { ListProductsUseCase } from '../../../application/usecases/product/ListProductsUseCase';
+import { ListProductsUseCase } from '../../../application/usecases/product/ListProductsUseCase';
 // import { SearchProductsUseCase } from '../../../application/usecases/product/SearchProductsUseCase';
 // import { GetProductByIdUseCase } from '../../../application/usecases/product/GetProductByIdUseCase';
 // import { UpdateProductUseCase } from '../../../application/usecases/product/UpdateProductUseCase';
@@ -15,8 +15,8 @@ export class ProductController {
   constructor(
     @inject('CreateProductUseCase')
     private createProductUseCase: CreateProductUseCase,
-    // @inject('ListProductsUseCase')
-    // private listProductsUseCase: ListProductsUseCase,
+    @inject('ListProductsUseCase')
+    private listProductsUseCase: ListProductsUseCase,
     // @inject('SearchProductsUseCase')
     // private searchProductsUseCase: SearchProductsUseCase,
     // @inject('GetProductByIdUseCase')
@@ -43,15 +43,15 @@ export class ProductController {
     }
   }
 
-  // async listProducts(req: Request, res: Response): Promise<void> {
-  //   try {
-  //     const Products: Product[] = await this.listProductsUseCase.execute();
+  async listProducts(req: Request, res: Response): Promise<void> {
+    try {
+      const Products: Product[] = await this.listProductsUseCase.execute();
 
-  //     res.status(200).json(Products);
-  //   } catch (error) {
-  //     res.status(500).json({ error: 'Erro ao listar produtos' });
-  //   }
-  // }
+      res.status(200).json(Products);
+    } catch (error) {
+      res.status(500).json({ error: 'Erro ao listar produtos' });
+    }
+  }
 
   // async searchProducts(req: CustomRequest, res: Response): Promise<void> {
   //   try {
