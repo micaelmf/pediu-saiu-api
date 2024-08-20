@@ -63,7 +63,9 @@ export class CategoryRepository implements CategoryRepositoryInterface {
     try {
       const categories = await this.prisma.category.findMany({
         where: {
-          name: filters?.name || undefined,
+          name: {
+            contains: filters?.name || undefined,
+          },
           status: filters?.status || undefined,
         },
       });

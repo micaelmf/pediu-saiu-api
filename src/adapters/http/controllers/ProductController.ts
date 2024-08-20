@@ -2,7 +2,7 @@
 import { Request, Response } from 'express';
 import { CreateProductUseCase } from '../../../application/usecases/product/CreateProductUseCase';
 import { ListProductsUseCase } from '../../../application/usecases/product/ListProductsUseCase';
-// import { SearchProductsUseCase } from '../../../application/usecases/product/SearchProductsUseCase';
+import { SearchProductsUseCase } from '../../../application/usecases/product/SearchProductsUseCase';
 // import { GetProductByIdUseCase } from '../../../application/usecases/product/GetProductByIdUseCase';
 // import { UpdateProductUseCase } from '../../../application/usecases/product/UpdateProductUseCase';
 // import { UpdateProductVisibilityUseCase } from '../../../application/usecases/product/UpdateProductVisibilityUseCase';
@@ -17,15 +17,15 @@ export class ProductController {
     private createProductUseCase: CreateProductUseCase,
     @inject('ListProductsUseCase')
     private listProductsUseCase: ListProductsUseCase,
-    // @inject('SearchProductsUseCase')
-    // private searchProductsUseCase: SearchProductsUseCase,
+    @inject('SearchProductsUseCase')
+    private searchProductsUseCase: SearchProductsUseCase,
     // @inject('GetProductByIdUseCase')
     // private getProductByIdUseCase: GetProductByIdUseCase,
     // @inject('UpdateProductUseCase')
     // private updateProductUseCase: UpdateProductUseCase,
     // @inject('UpdateProductVisibilityUseCase')
     // private updateProductVisibilityUseCase: UpdateProductVisibilityUseCase
-  ) {}
+  ) { }
 
   async createProduct(req: CustomRequest, res: Response): Promise<void> {
     try {
@@ -53,16 +53,16 @@ export class ProductController {
     }
   }
 
-  // async searchProducts(req: CustomRequest, res: Response): Promise<void> {
-  //   try {
-  //     const filters: Record<string, any> = req.query;
-  //     const products: Product[] = await this.searchProductsUseCase.execute(filters);
-  
-  //     res.status(200).json(products);
-  //   } catch (error) {
-  //     res.status(500).json({ error: 'Internal Server Error' });
-  //   }
-  // }
+  async searchProducts(req: CustomRequest, res: Response): Promise<void> {
+    try {
+      const filters: Record<string, any> = req.query;
+      const products: Product[] = await this.searchProductsUseCase.execute(filters);
+
+      res.status(200).json(products);
+    } catch (error) {
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  }
 
   // async getProductById(req: Request, res: Response): Promise<void> {
   //   try {

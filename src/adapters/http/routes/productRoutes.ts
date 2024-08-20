@@ -20,9 +20,9 @@ router.get('/', verifyToken, async (req: CustomRequest, res) => {
   await productController.listProducts(req, res);
 });
 
-// router.get('/search', verifyToken, async (req: CustomRequest, res) => {
-//   await productController.searchProducts(req, res);
-// });
+router.get('/search', verifyToken, async (req: CustomRequest, res) => {
+  await productController.searchProducts(req, res);
+});
 
 // router.get('/:id', verifyToken, async (req: CustomRequest, res) => {
 //   await productController.getProductById(req, res);

@@ -1,5 +1,5 @@
 // src/adapters/database/mysql/repositories/ProductRepository.ts
-import { type } from 'os';
+
 import { PrismaClient } from '../../../../../prisma/generated/client';
 import { Product } from '../../../../domain/entities/Product';
 import { ProductRepositoryInterface } from '../../../../domain/repositories/ProductRepositoryInterface';
@@ -55,6 +55,30 @@ export class ProductRepository implements ProductRepositoryInterface {
       return products;
     } catch (error) {
       throw new Error('Erro ao buscar todos os produtos.');
+    }
+  }
+
+  async findByFilters(filters: Record<string, any>): Promise<Product[]> {
+    try {
+      const products = await this.prisma.product.findMany({
+        where: {
+          name: {
+            contains: filters?.name || undefined,
+          },
+          status: filters?.status || undefined,
+          type: filters?.type || undefined,
+          free: filters?.free || undefined,
+          price: filters?.price || undefined,
+          categoryId: filters?.categoryId || undefined,
+          enterpriseId: filters?.enterpriseId || undefined,
+          accompanimentsMax: filters?.accompanimentsMax || undefined,
+          additionalsMax: filters?.additionalsMax || undefined
+        },
+      });
+
+      return products;
+    } catch (error) {
+      throw new Error('Erro ao buscar produtos pelos filtros.');
     }
   }
 
