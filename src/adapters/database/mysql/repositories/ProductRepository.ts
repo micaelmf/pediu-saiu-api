@@ -52,7 +52,11 @@ export class ProductRepository implements ProductRepositoryInterface {
 
   async findAll(): Promise<Product[]> {
     try {
-      const products = await this.prisma.product.findMany();
+      const products = await this.prisma.product.findMany({
+        include: {
+          category: true,
+        },
+      });
       return products;
     } catch (error) {
       throw new Error('Erro ao buscar todos os produtos.');

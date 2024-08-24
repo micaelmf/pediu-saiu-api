@@ -3,7 +3,6 @@ import { ProductRepositoryInterface } from '../../../domain/repositories/Product
 import { Product } from '../../../domain/entities/Product';
 import { inject, injectable } from 'tsyringe';
 import { ulid } from 'ulid';
-import { ProductDTO } from '../../dtos/ProductDTO';
 
 @injectable()
 export class CreateProductUseCase {
