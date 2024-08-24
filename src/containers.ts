@@ -22,6 +22,9 @@ import { CreateProductUseCase } from './application/usecases/product/CreateProdu
 import { ProductRepository } from './adapters/database/mysql/repositories/ProductRepository';
 import { ListProductsUseCase } from './application/usecases/product/ListProductsUseCase';
 import { SearchProductsUseCase } from './application/usecases/product/SearchProductsUseCase';
+import { UpdateProductUseCase } from './application/usecases/product/UpdateProductUseCase';
+import { GetProductByIdUseCase } from './application/usecases/product/GetProductByIdUseCase';
+import { UpdateProductVisibilityUseCase } from './application/usecases/product/UpdateProductVisibilityUseCase';
 
 
 /**
@@ -120,17 +123,17 @@ container.register<SearchProductsUseCase>('SearchProductsUseCase', {
   useClass: SearchProductsUseCase,
 });
 
-// container.register<GetProductByIdUseCase>('GetProductByIdUseCase', {
-//   useClass: GetProductByIdUseCase,
-// });
+container.register<GetProductByIdUseCase>('GetProductByIdUseCase', {
+  useClass: GetProductByIdUseCase,
+});
 
-// container.register<UpdateProductUseCase>('UpdateProductUseCase', {
-//   useClass: UpdateProductUseCase,
-// });
+container.register<UpdateProductUseCase>('UpdateProductUseCase', {
+  useClass: UpdateProductUseCase,
+});
 
-// container.register<UpdateProductVisibilityUseCase>('UpdateProductVisibilityUseCase', {
-//   useClass: UpdateProductVisibilityUseCase,
-// });
+container.register<UpdateProductVisibilityUseCase>('UpdateProductVisibilityUseCase', {
+  useClass: UpdateProductVisibilityUseCase,
+});
 
 
 /**

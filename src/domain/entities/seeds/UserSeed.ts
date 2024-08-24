@@ -25,7 +25,7 @@ export function createUserSeed(
   const avatar = `${ulidString}.jpg`;
 
   const password =
-    '$2b$10$e./L/zFAxWk08NpFVWWNieTjzaPX0IrqSpajLJii4/ow05lHcsJ1W';
+    '$2b$16$aEYoRXI8gaJi16t90TUxwuRHz.iv3djwOlFgI.BQYfDcMHYxqsVjm';
 
   users.push({
     uuid: ulidString,

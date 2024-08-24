@@ -30,6 +30,7 @@ COPY . .
 
 # Exponha a porta da aplicação
 EXPOSE 4000
+EXPOSE 9229
 
 # Comando para iniciar a aplicação
 # CMD ["npm", "start"]

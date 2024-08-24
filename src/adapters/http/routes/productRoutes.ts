@@ -24,16 +24,16 @@ router.get('/search', verifyToken, async (req: CustomRequest, res) => {
   await productController.searchProducts(req, res);
 });
 
-// router.get('/:id', verifyToken, async (req: CustomRequest, res) => {
-//   await productController.getProductById(req, res);
-// });
+router.get('/:id', verifyToken, async (req: CustomRequest, res) => {
+  await productController.getProductById(req, res);
+});
 
-// router.put('/:id', verifyToken, async (req: CustomRequest, res) => {
-//   await productController.updateProduct(req, res);
-// });
+router.put('/:id', verifyToken, async (req: CustomRequest, res) => {
+  await productController.updateProduct(req, res);
+});
 
-// router.patch('/:id', verifyToken, async (req: CustomRequest, res) => {
-//   await productController.updateVisibility(req, res);
-// });
+router.patch('/:id', verifyToken, async (req: CustomRequest, res) => {
+  await productController.updateVisibility(req, res);
+});
 
 export default router;

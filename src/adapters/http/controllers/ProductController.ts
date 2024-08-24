@@ -3,9 +3,9 @@ import { Request, Response } from 'express';
 import { CreateProductUseCase } from '../../../application/usecases/product/CreateProductUseCase';
 import { ListProductsUseCase } from '../../../application/usecases/product/ListProductsUseCase';
 import { SearchProductsUseCase } from '../../../application/usecases/product/SearchProductsUseCase';
-// import { GetProductByIdUseCase } from '../../../application/usecases/product/GetProductByIdUseCase';
-// import { UpdateProductUseCase } from '../../../application/usecases/product/UpdateProductUseCase';
-// import { UpdateProductVisibilityUseCase } from '../../../application/usecases/product/UpdateProductVisibilityUseCase';
+import { GetProductByIdUseCase } from '../../../application/usecases/product/GetProductByIdUseCase';
+import { UpdateProductUseCase } from '../../../application/usecases/product/UpdateProductUseCase';
+import { UpdateProductVisibilityUseCase } from '../../../application/usecases/product/UpdateProductVisibilityUseCase';
 import { inject, injectable } from 'tsyringe';
 import { Product } from '../../../domain/entities/Product';
 import { CustomRequest } from '../../../types';
@@ -19,23 +19,18 @@ export class ProductController {
     private listProductsUseCase: ListProductsUseCase,
     @inject('SearchProductsUseCase')
     private searchProductsUseCase: SearchProductsUseCase,
-    // @inject('GetProductByIdUseCase')
-    // private getProductByIdUseCase: GetProductByIdUseCase,
-    // @inject('UpdateProductUseCase')
-    // private updateProductUseCase: UpdateProductUseCase,
-    // @inject('UpdateProductVisibilityUseCase')
-    // private updateProductVisibilityUseCase: UpdateProductVisibilityUseCase
+    @inject('GetProductByIdUseCase')
+    private getProductByIdUseCase: GetProductByIdUseCase,
+    @inject('UpdateProductUseCase')
+    private updateProductUseCase: UpdateProductUseCase,
+    @inject('UpdateProductVisibilityUseCase')
+    private updateProductVisibilityUseCase: UpdateProductVisibilityUseCase
   ) { }
 
   async createProduct(req: CustomRequest, res: Response): Promise<void> {
     try {
-      let productData: Product = {
-        ...req.body,
-      };
-
-      const createdProduct = await this.createProductUseCase.execute(
-        productData
-      );
+      const productData: Product = req.body;
+      const createdProduct = await this.createProductUseCase.execute(productData);
 
       res.status(201).json(createdProduct);
     } catch (error) {
@@ -64,47 +59,48 @@ export class ProductController {
     }
   }
 
-  // async getProductById(req: Request, res: Response): Promise<void> {
-  //   try {
-  //     const productId: number = parseInt(req.params.id); // Suponha que o ID da categoria seja passado como parâmetro na URL
-  //     const product: Product | null =
-  //       await this.getProductByIdUseCase.execute(productId);
+  async getProductById(req: Request, res: Response): Promise<void> {
+    try {
+      const productId: number = parseInt(req.params.id);
+      const product: Product | null =
+        await this.getProductByIdUseCase.execute(productId);
 
-  //     if (product) {
-  //       res.status(200).json(product);
-  //     } else {
-  //       res.status(404).json({ error: 'Categoria não encontrada' });
-  //     }
-  //   } catch (error) {
-  //     res.status(500).json({ error: 'Erro ao buscar categoria por ID' });
-  //   }
-  // }
+      if (product) {
+        res.status(200).json(product);
+      } else {
+        res.status(404).json({ error: 'Produto não encontrada' });
+      }
+    } catch (error) {
+      res.status(500).json({ error: 'Erro ao buscar produto por ID' });
+    }
+  }
 
-  // async updateProduct(req: Request, res: Response): Promise<void> {
-  //   try {
-  //     const productId: number = parseInt(req.params.id);
-  //     const updatedData: Product = req.body;
-  //     const updatedProduct = await this.updateProductUseCase.execute(
-  //       productId,
-  //       updatedData
-  //     );
+  async updateProduct(req: Request, res: Response): Promise<void> {
+    try {
+      const productId: number = parseInt(req.params.id);
+      const updatedData: Product = req.body;
 
-  //     res.status(200).json(updatedProduct);
-  //   } catch (error) {
-  //     res.status(500).json({ error: 'Erro ao atualizar categoria' });
-  //   }
-  // }
+      const updatedProduct = await this.updateProductUseCase.execute(
+        productId,
+        updatedData
+      );
 
-  // async updateVisibility(req: Request, res: Response): Promise<void> {
-  //   try {
-  //     const productId: number = parseInt(req.params.id);
-  //     const { status } = req.body;
-  //     const updatedProduct =
-  //       await this.updateProductVisibilityUseCase.execute(productId, status);
+      res.status(200).json(updatedProduct);
+    } catch (error) {
+      res.status(500).json({ error: 'Erro ao atualizar prouto' });
+    }
+  }
 
-  //     res.status(200).json(updatedProduct);
-  //   } catch (error) {
-  //     res.status(500).json({ error: 'Erro ao atualizar categoria' });
-  //   }
-  // }
+  async updateVisibility(req: Request, res: Response): Promise<void> {
+    try {
+      const productId: number = parseInt(req.params.id);
+      const { status } = req.body;
+      const updatedProduct =
+        await this.updateProductVisibilityUseCase.execute(productId, status);
+
+      res.status(200).json(updatedProduct);
+    } catch (error) {
+      res.status(500).json({ error: 'Erro ao atualizar categoria' });
+    }
+  }
 }

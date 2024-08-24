@@ -25,12 +25,13 @@ export class ProductRepository implements ProductRepositoryInterface {
           additionalsMax: product.additionalsMax,
           accompanimentsMax: product.accompanimentsMax,
           categoryId: product.categoryId,
-          enterpriseId: product.enterpriseId,
+          enterpriseId: product.enterpriseId
         },
       });
 
       return createdProduct;
     } catch (error) {
+      console.error('Erro ao criar produto no banco de dados:', error);
       throw new Error('Erro ao criar produto no banco de dados.');
     }
   }
@@ -65,14 +66,14 @@ export class ProductRepository implements ProductRepositoryInterface {
           name: {
             contains: filters?.name || undefined,
           },
-          status: filters?.status || undefined,
           type: filters?.type || undefined,
-          free: filters?.free || undefined,
           price: filters?.price || undefined,
-          categoryId: filters?.categoryId || undefined,
-          enterpriseId: filters?.enterpriseId || undefined,
+          free: filters?.free || undefined,
+          status: filters?.status || undefined,
           accompanimentsMax: filters?.accompanimentsMax || undefined,
-          additionalsMax: filters?.additionalsMax || undefined
+          additionalsMax: filters?.additionalsMax || undefined,
+          categoryId: filters?.categoryId || undefined,
+          enterpriseId: filters?.enterpriseId || undefined
         },
       });
 
@@ -104,8 +105,31 @@ export class ProductRepository implements ProductRepositoryInterface {
       });
 
       return updatedProduct;
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error('Erro ao atualizar produto no banco de dados:', error.message);
+        throw new Error('Erro ao atualizar produto no banco de dados.');
+      } else {
+        console.error('Erro desconhecido ao atualizar produto no banco de dados:', error);
+        throw new Error('Erro desconhecido ao atualizar produto no banco de dados.');
+      }
+    }
+  }
+
+  async updateStatus(id: number, status: string): Promise<boolean> {
+    try {
+      await this.prisma.product.update({
+        where: {
+          id,
+        },
+        data: {
+          status,
+        },
+      });
+
+      return true;
     } catch (error) {
-      throw new Error('Erro ao atualizar produto no banco de dados.');
+      throw new Error('Erro ao atualizar status do produto.');
     }
   }
 

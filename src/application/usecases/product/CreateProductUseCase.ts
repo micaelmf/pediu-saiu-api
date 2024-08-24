@@ -3,29 +3,46 @@ import { ProductRepositoryInterface } from '../../../domain/repositories/Product
 import { Product } from '../../../domain/entities/Product';
 import { inject, injectable } from 'tsyringe';
 import { ulid } from 'ulid';
+import { ProductDTO } from '../../dtos/ProductDTO';
 
 @injectable()
 export class CreateProductUseCase {
   constructor(
     @inject('ProductRepository')
     private productRepository: ProductRepositoryInterface
-  ) {}
+  ) { }
 
-  async execute(product: Product): Promise<Product> {
+  async execute(productData: Product): Promise<Product> {
     try {
-      const productData: Product = {
-        ...product,
+      const product: Product = {
+        ...productData,
         uuid: ulid(),
-        status: product.status || undefined,
+        price: this.setPrice(productData.price, productData.free),
+        free: this.convertFreeField(productData.free),
+        categoryId: parseInt(String(productData.categoryId)),
       };
 
-      const createdProduct = await this.productRepository.create(
-        productData
-      );
+      const createdProduct = await this.productRepository.create(product);
 
       return createdProduct;
     } catch (error) {
       throw error; // Propague o erro para quem chamou o caso de uso
     }
+  }
+
+  private convertFreeField(free: any): boolean {
+    if (typeof free === 'string' && free === 'on') {
+      return true;
+    }
+
+    return false;
+  }
+
+  private setPrice(price: number, free: any): number {
+    if (price == undefined && free) {
+      price = 0.00;
+    }
+
+    return parseFloat(price.toString().replace(',', '.'));
   }
 }

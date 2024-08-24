@@ -7,7 +7,9 @@ services:
     volumes:
       - .:/usr/src/app
     ports:
-      - "4000:4000"
+      - '4000:4000'
+      - '9229:9229'
+    command: npm run dev
     environment:
       - NODE_ENV=development
       - DATABASE_URL=${DATABASE_URL}
@@ -19,7 +21,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: pediu_saiu_wsl
     ports:
-      - "3306:3306"
+      - '3306:3306'
     volumes:
       - db_data:/var/lib/mysql
 

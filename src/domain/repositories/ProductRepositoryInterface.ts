@@ -7,5 +7,6 @@ export interface ProductRepositoryInterface {
   findAll(): Promise<Product[]>;
   findByFilters(filters: Record<string, any>): Promise<Product[]>;
   update(id: number, product: Product): Promise<Product>;
+  updateStatus(id: number, status: string): Promise<boolean>;
   delete(id: number): Promise<Product>;
 }
