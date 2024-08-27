@@ -100,7 +100,7 @@ export class ProductController {
 
       res.status(200).json(updatedProduct);
     } catch (error) {
-      res.status(500).json({ error: 'Erro ao atualizar categoria' });
+      res.status(500).json({ error: 'Erro ao atualizar produto' });
     }
   }
 }

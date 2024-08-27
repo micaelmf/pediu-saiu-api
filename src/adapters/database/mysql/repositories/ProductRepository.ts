@@ -56,6 +56,11 @@ export class ProductRepository implements ProductRepositoryInterface {
         include: {
           category: true,
         },
+        where: {
+          status: {
+            not: 'deleted',
+          },
+        },
       });
       return products;
     } catch (error) {
@@ -68,16 +73,20 @@ export class ProductRepository implements ProductRepositoryInterface {
       const products = await this.prisma.product.findMany({
         where: {
           name: {
-            contains: filters?.name || undefined,
+            contains: filters.name || undefined,
           },
-          type: filters?.type || undefined,
-          price: filters?.price || undefined,
-          free: filters?.free || undefined,
-          status: filters?.status || undefined,
-          accompanimentsMax: filters?.accompanimentsMax || undefined,
-          additionalsMax: filters?.additionalsMax || undefined,
-          categoryId: filters?.categoryId || undefined,
-          enterpriseId: filters?.enterpriseId || undefined
+          description: {
+            contains: filters.description || undefined,
+          },
+          // type: filters.type || undefined,
+          price: filters.price || undefined,
+          free: filters.free || undefined,
+          status: filters.status || undefined,
+          categoryId: parseInt(filters.categoryId) || undefined,
+          enterpriseId: parseInt(filters.enterpriseId) || undefined
+        },
+        include: {
+          category: true,
         },
       });
 
