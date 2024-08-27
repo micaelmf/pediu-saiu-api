@@ -19,6 +19,7 @@ export class CreateProductUseCase {
         price: this.setPrice(productData.price, productData.free),
         free: this.convertFreeField(productData.free),
         categoryId: parseInt(String(productData.categoryId)),
+        enterpriseId: 1 //TODO: Buscar o ID da empresa logada
       };
 
       const createdProduct = await this.productRepository.create(product);
@@ -38,7 +39,10 @@ export class CreateProductUseCase {
   }
 
   private setPrice(price: number, free: any): number {
-    if (price == undefined && free) {
+    if (
+      price == undefined && free
+      || price == undefined && free == undefined
+    ) {
       price = 0.00;
     }
 

@@ -12,12 +12,17 @@ export class UpdateProductUseCase {
 
     async execute(productId: number, updatedData: Product): Promise<Product | null> {
         try {
-            updatedData.status = updatedData.status || undefined;
-            updatedData.price = this.setPrice(updatedData.price, updatedData.free);
+            const product: Product = {
+                ...updatedData,
+                price: this.setPrice(updatedData.price, updatedData.free),
+                free: this.convertFreeField(updatedData.free),
+                categoryId: parseInt(String(updatedData.categoryId)),
+                enterpriseId: 1 //TODO: Buscar o ID da empresa logada
+            };
 
             const result = await this.productRepository.update(
                 productId,
-                updatedData
+                product
             );
 
             if (!result) {
@@ -30,8 +35,19 @@ export class UpdateProductUseCase {
         }
     }
 
+    private convertFreeField(free: any): boolean {
+        if (typeof free === 'string' && free === 'on') {
+            return true;
+        }
+
+        return false;
+    }
+
     private setPrice(price: number | string, free: boolean | string): number {
-        if (price == undefined && free) {
+        if (
+            price == undefined && free
+            || price == undefined && free == undefined
+        ) {
             price = 0.00;
         }
 
